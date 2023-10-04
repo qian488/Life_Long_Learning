@@ -3,7 +3,7 @@
 int main()
 {
     char c[10];
-    gets(c);
+    scanf(" %[^\n]", c);
     int m = strlen(c);
     for (int j = m; j >= 0; j--)
     {
