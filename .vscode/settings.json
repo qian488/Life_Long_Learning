@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "cmath": "cpp",
+<<<<<<< HEAD
+        "iomanip": "cpp",
+        "iostream": "cpp"
+=======
+        "iomanip": "cpp"
+>>>>>>> 094e082a136faaaf190004da24acb640757f794c
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
