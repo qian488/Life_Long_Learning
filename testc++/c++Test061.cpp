@@ -10,6 +10,7 @@ bool check()
     int cnt = 0;
     for (int i = 0; i < n; i++)
     {
+        //二进制枚举b的子序列
         for (int j = 0; j < (1<<m); j++)
         {
             int sum = a[i];
@@ -45,6 +46,8 @@ void sol()
 {
     
     cin >> n >> m >> k;
+    a.clear();//每解决完一次要清空，避免影响下次的解决
+    b.clear();
     for (int i = 0; i < n; i++)
     {
         int t;
