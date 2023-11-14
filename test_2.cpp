@@ -1,85 +1,57 @@
 #include<iostream>
 #include<vector>
-#include<stack>
-#include<set>
-#include<unordered_set>
-#include<map>
-#include<unordered_map>
-#include<numeric>
-#include<math.h>
 #include<algorithm>
-#include<queue>
-#include<string>
-#include<random>
-#include<time.h>
-#include<cstring>
 using namespace std;
-typedef long long ll;
-typedef unsigned long long ull;
-typedef long double ld;
-#define endl '\n'
 
-vector<int> mids,is,js,cnts;
+vector<int> lasts;
 
-int check(vector<int> v,int lim) {
-    int cnt=1,j=0;
-    for(int i=0;i<v.size();i++) {
-        if(v[i]-v[j]>lim) {
-            j=i;
-            cnt++;
+bool check(vector<int> v,int mid,int M)
+{
+    int y=0,last=0;
+    for(int i=0;i<v.size();i++)
+    {
+        if(v[i]-last<mid)
+        {
+            y++;
         }
-		is.push_back(i);
-		js.push_back(j);
-		cnts.push_back(cnt);
+        else
+        {
+            last=v[i];
+        }
+		lasts.push_back(last);
 	}
-    return cnt;
+    return y<=M;
 }
 
-int main() {
- 
-	ios::sync_with_stdio(0); cout.tie(0);
- 
-    int n,k;cin>>n>>k;
-    vector<int> v(n);
-    for(int i=0;i<n;i++) cin>>v[i];
-    sort(v.begin(),v.end());
-    int l=-1,r=v.size();
-    while(l+1<r) {
-        int mid=(l+r)/2;
-		mids.push_back(mid);
-		if(check(v,mid)<=k) {
-            r=mid;
-        } else {
+int main()
+{
+    long long L,N,M;
+    cin>>L>>N>>M;
+    vector<int> v(N);
+    for(int i = 0;i<N;i++)
+    {
+        cin>>v[i];
+    }
+    v.push_back(L);
+    int l=0,r=L+1;
+    while(l+1<r)
+    {
+        int mid=l+r>>1;
+        if(check(v,mid,M))
+        {
             l=mid;
         }
+        else
+        {
+            r=mid;
+        }
     }
-    
-
-	cout << "mids:";
-	for (vector<int>::iterator it = mids.begin(); it < mids.end(); it++)
+	cout << l << endl;
+	cout << "last:";
+	for (vector<int>::iterator it = lasts.begin(); it != lasts.end();it++)
 	{
 		cout << *it << " ";
 	}
 	cout << endl;
-	cout << "is:";
-	for (vector<int>::iterator it = is.begin(); it < is.end(); it++)
-	{
-		cout << *it << " ";
-	}
-	cout << endl;
-	cout << "js:";
-	for (vector<int>::iterator it = js.begin(); it < js.end(); it++)
-	{
-		cout << *it << " ";
-	}
-	cout << endl;
-	cout << "cnts:";
-	for (vector<int>::iterator it = cnts.begin(); it < cnts.end(); it++)
-	{
-		cout << *it << " ";
-	}
-	cout << endl;
-
-	cout<<r;
 	return 0;
 }

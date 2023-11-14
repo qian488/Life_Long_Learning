@@ -2,23 +2,20 @@
 #include<vector>
 #include<algorithm>
 using namespace std;
-
-vector<int> js;
-
+//跳石头
 bool check(vector<int> v,int mid,int M)
 {
     int y=0,j=0;
     for(int i=0;i<v.size();i++)
     {
-        if(v[i]-v[j]<mid)
+        if(v[i]-j<mid)
         {
             y++;
         }
         else
         {
-            j=i;
+            j=v[i];
         }
-        js.push_back(v[j]);
     }
     return y<=M;
 }
@@ -46,13 +43,6 @@ int main()
             r=mid;
         }
     }
-    cout << l << endl;
-    cout << "v[j]:";
-    for (vector<int>::iterator it = js.begin(); it != js.end();it++)
-    {
-        cout << *it << " ";
-    }
-    cout << endl;
-
+    cout<<l;
     return 0;
 }

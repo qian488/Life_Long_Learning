@@ -1,5 +1,4 @@
 #include<iostream>
-<<<<<<< HEAD
 #include<iomanip>
 using namespace std;
 int main()
@@ -24,14 +23,5 @@ int main()
         }
         cout << endl;
     }
-=======
-using namespace std;
-int main()
-{
-    int a;
-    cin>>a;
-    //向下取整
-    
->>>>>>> 094e082a136faaaf190004da24acb640757f794c
     return 0;
 }
