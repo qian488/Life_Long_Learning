@@ -1,9 +1,9 @@
 #include<iostream>
 
 using namespace std;
-//派蒙数列
-//快速幂典题
+//Median Pyramid Hard
 int main()
 {
+    
     return 0;
 }

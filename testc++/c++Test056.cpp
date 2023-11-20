@@ -2,22 +2,33 @@
 #include<vector>
 using namespace std;
 //A*B
+//大数乘大数要怎么解决呢？
 vector<int> mul(vector<int> &A,vector<int> &B)
 {
-    vector<int> C;
+    vector<int> C(A.size()+B.size(),0);
 
     int t = 0;
-    for (int j = 0; j < B.size(); j++)
+    for (int i = 0; i < A.size(); i++)
     {
-        for (int i = 0; i < A.size()||t; i++)
+        for (int j = 0; j < B.size(); j++)
         {
-            
-            t += A[i] * B[j];
-            C.push_back(t % 10);
+            t += A[i] * B[j] + C[i + j];
+            C[i + j] = t % 10;
             t /= 10;
         }
+        int k = B.size();
+        if (t)
+        {
+            C[i + k] = t % 10;
+            t /= 10;
+            k++;
+        }
+        
     }
-    
+    while (C[C.size()-1]==0&&C.size()>1)
+    {
+        C.pop_back();
+    }
     
     return C;
 }

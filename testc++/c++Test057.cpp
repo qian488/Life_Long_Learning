@@ -1,25 +1,40 @@
 #include<iostream>
-#include<string>
-#include<algorithm>
+#include<vector>
 using namespace std;
-//金鱼的饭店
+//A*B
+//高精乘整型
+vector<int> mul(vector<int> &A,int b)
+{
+    vector<int> C;
+
+    int t = 0;
+    for (int i = 0; i < A.size()||t; i++)
+    {
+        if (i<A.size())
+        {
+            t += A[i] * b;
+        }
+        C.push_back(t % 10);
+        t /= 10;
+    }
+    return C;
+}
 int main()
 {
-    int n;
-    cin>>n;
-    for(int i=0;i<n;i++)
+    string a;
+    int b;
+
+    cin >> a >> b;
+    vector<int> A;
+    for (int i = a.size()-1; i >=0 ; i--)
     {
-        string s;
-        cin>>s;
-        transform(s.begin(), s.end(), s.begin(),::tolower);
-        if(s=="fandian")
-        {
-            cout<<"YES"<<endl;
-        }
-        else
-        {
-            cout<<"NO"<<endl;
-        }
+        A.push_back(a[i] - '0');
+    }
+
+    vector<int> C = mul(A, b);
+    for (int i = C.size()-1; i >= 0; i--)
+    {
+        printf("%d", C[i]);
     }
     
     return 0;

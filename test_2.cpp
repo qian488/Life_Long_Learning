@@ -1,57 +1,42 @@
-#include<iostream>
-#include<vector>
-#include<algorithm>
+# include <iostream>
+# include <algorithm>
 using namespace std;
+int n,c;
+const int N = 1e5+10;
+int a[N];
 
-vector<int> lasts;
-
-bool check(vector<int> v,int mid,int M)
-{
-    int y=0,last=0;
-    for(int i=0;i<v.size();i++)
-    {
-        if(v[i]-last<mid)
-        {
-            y++;
-        }
-        else
-        {
-            last=v[i];
-        }
-		lasts.push_back(last);
+bool check(int st){
+	int pre = a[0];
+	int sum = 1;
+	for(int i=1;i<n;++i){
+		if(a[i]-pre >= st){
+			++sum;
+			pre = a[i];
+			if(sum>=c) return true;
+		}
 	}
-    return y<=M;
+	return false;
 }
-
-int main()
+int main(void)
 {
-    long long L,N,M;
-    cin>>L>>N>>M;
-    vector<int> v(N);
-    for(int i = 0;i<N;i++)
-    {
-        cin>>v[i];
-    }
-    v.push_back(L);
-    int l=0,r=L+1;
-    while(l+1<r)
-    {
-        int mid=l+r>>1;
-        if(check(v,mid,M))
-        {
-            l=mid;
-        }
-        else
-        {
-            r=mid;
-        }
-    }
-	cout << l << endl;
-	cout << "last:";
-	for (vector<int>::iterator it = lasts.begin(); it != lasts.end();it++)
-	{
-		cout << *it << " ";
+	cin>>n>>c;
+	for(int i=0;i<n;++i){
+		cin>>a[i];
+	} 
+	
+	sort(a,a+n);
+	
+	int l = 0,r = a[n-1] - a[0];
+	int ans = 0;
+	
+	while(l<r){
+		int mid = (l+r +1 ) >> 1 ;
+		if(check(mid)){
+			l = mid;
+		}else{
+			r = mid-1;
+		}
 	}
-	cout << endl;
+	cout<<l<<endl;
 	return 0;
-}
+ } 
