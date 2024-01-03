@@ -4,6 +4,8 @@
 using namespace std;
 //7_4 折半（二分）查找
 //搞不懂为什么只有一半的数据过了，剩下一半是什么情况？
+//原来是如果有三个相同数据，取中间的位置
+//用ans来记录答案吧
 int main()
 {
     int n;
@@ -21,7 +23,7 @@ int main()
         cout << v[i] << " ";
     }
     */
-    int num;
+    int num,ans=-1;
     cin >> num;
     while (num--)
     {
@@ -32,19 +34,26 @@ int main()
         {
             int mid = l + r >> 1;
             //cout << mid << " ";
-            if (v[mid]>=a)
+            if (v[mid]>a)
             {
                 r = mid;
+                ans = r;
+            }
+            else if(v[mid]<a)
+            {
+                l = mid;
+                ans = l;
             }
             else
             {
-                l = mid;
+                ans = mid;
+                break;
             }
             
         }
-        if (v[r]==a)
+        if (v[ans]==a)
         {
-            cout << r << endl;
+            cout << ans << endl;
         }
         else
         {

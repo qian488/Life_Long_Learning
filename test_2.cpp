@@ -1,42 +1,42 @@
-# include <iostream>
-# include <algorithm>
-using namespace std;
-int n,c;
-const int N = 1e5+10;
-int a[N];
+#include<iostream>
+#include<algorithm>
+#include<vector>
+#include<string>
 
-bool check(int st){
-	int pre = a[0];
-	int sum = 1;
-	for(int i=1;i<n;++i){
-		if(a[i]-pre >= st){
-			++sum;
-			pre = a[i];
-			if(sum>=c) return true;
-		}
-	}
-	return false;
-}
-int main(void)
+using namespace std;
+
+int main()
 {
-	cin>>n>>c;
-	for(int i=0;i<n;++i){
-		cin>>a[i];
-	} 
-	
-	sort(a,a+n);
-	
-	int l = 0,r = a[n-1] - a[0];
-	int ans = 0;
-	
-	while(l<r){
-		int mid = (l+r +1 ) >> 1 ;
-		if(check(mid)){
-			l = mid;
-		}else{
-			r = mid-1;
-		}
-	}
-	cout<<l<<endl;
-	return 0;
- } 
+    string s1 = " hello,world! ";
+    string s2 = " hello,Awith! ";
+    string s3 = " li jia kai nb ";
+    vector<string> v;
+    v.push_back(s1);
+    v.push_back(s2);
+    v.push_back(s3);
+    string str;
+    for (auto e:v)
+    {
+        str += e;
+    }
+    cout << "str1:" << str << endl;
+
+    vector<string> vt = v;
+    str.clear();
+    for (auto e:vt)
+    {
+        reverse(e.begin(), e.end());
+        str += e;
+    }
+    cout << "str2:" << str << endl;
+
+    str.clear();
+    reverse(vt.begin(), vt.end());
+    for (auto e:vt)
+    {
+        reverse(e.begin(), e.end());
+        str += e;
+    }
+    cout << "str3:" << str << endl;
+    return 0;
+}

@@ -1,16 +1,10 @@
 #include <stdio.h>
-int SUM( int n )
-{
-	if ( n == 1 )
-		return(1);
-	else return(n * n + SUM( n - 1 ) );
-}
-
-
-
+#define  F(n)  3*n
 
 int main()
 {
-	printf( "SUM=%d", SUM( 5 ) );
+	printf("%d\n", F(5 + 2));
+	printf("%d\n", F(2 + 5));
+	printf("%d", F((5 + 2)));
 	return(0);
 }
