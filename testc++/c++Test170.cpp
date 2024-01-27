@@ -1,7 +1,7 @@
 #include<iostream>
 
 using namespace std;
-//牛客小白月赛86--剪纸游戏
+//力扣第 122 场双周赛--100164.通过操作使数组长度最小
 int main()
 {
     

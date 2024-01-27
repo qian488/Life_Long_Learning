@@ -1,7 +1,7 @@
 #include<iostream>
-
 using namespace std;
-//牛客小白月赛86--剪纸游戏
+//莞工集训24.01.20——F
+
 int main()
 {
     

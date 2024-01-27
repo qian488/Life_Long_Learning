@@ -15,6 +15,8 @@ heap[k]=heap[size];size--;down(k);up(k);
 5.修改任意元素
 heap[k]=x;down(k);up(k);
 */
+//终于蹲到一题用堆数据结构的题了
+//集美大学"第15届蓝桥杯大赛(软件类)"校内选拔赛--堆
 int main()
 {
     
