@@ -15,7 +15,7 @@ int main()
         {
             x /= i;
             ans.insert(i);
-        };
+        }
         
     }
     if (x>1)
