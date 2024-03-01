@@ -1,10 +1,11 @@
 #include <iostream>
 using namespace std;
 //蓝桥云课第 6 场 小白入门赛--3.数学奇才
+//不过的原因是爆int了，应该用ll
 const int N=1e5+10;
 typedef long long ll;
 int a[N];
-int s[N];
+ll s[N];
 int main()
 {
   int n;

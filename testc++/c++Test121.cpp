@@ -15,7 +15,6 @@ int h[N],e[M],ne[M],idx;// 对于每个点k，开一个单链表，存储k所有
 bool vis[N];//用于判断是否搜过
 queue<int> q;//队列，用于bfs
 vector<int> res;
-vector<int> tt;//用于存储邻接点时，在遍历邻接点之前对其进行排序，实现搜索的时候按从小到大的编号搜索
 
 void add(int a,int b)
 {//邻接表存图
@@ -27,7 +26,7 @@ void dfs(int u)
     vis[u]=true;//表示该点已被搜
     res.push_back(u);//存入答案数组
 
-    tt.clear();
+    vector<int> tt;
     for(int i=h[u];i!=-1;i=ne[i])
     {//遍历邻接表
         int j=e[i];
@@ -51,7 +50,7 @@ void bfs(int v)
         q.pop();//取出顶点
         res.push_back(t);//存入答案数组
 
-        tt.clear();
+        vector<int> tt;
         for(int i=h[t];i!=-1;i=ne[i])
         {//遍历邻接表
             int j=e[i];
@@ -125,3 +124,107 @@ int main()
 
     return 0;
 }
+/*ac代码
+#include <iostream>
+#include <algorithm>
+#include <queue>
+#include <cstring>
+#include <vector>
+using namespace std;
+
+const int N = 100010, M = N * 2;
+int h[N], e[M], ne[M], idx;
+bool vis[N];
+queue<int> q;
+vector<int> res;
+
+void add(int a, int b) {
+    e[idx] = b;
+    ne[idx] = h[a];
+    h[a] = idx++;
+}
+
+void dfs(int u) {
+    vis[u] = true;
+    res.push_back(u);
+
+    vector<int> tt;
+    for (int i = h[u]; i != -1; i = ne[i]) {
+        int j = e[i];
+        tt.push_back(j);
+    }
+    sort(tt.begin(), tt.end());
+
+    for (auto j : tt) {
+        if (!vis[j]) dfs(j);
+    }
+}
+
+void bfs(int v) {
+    vis[v] = true;
+    q.push(v);
+
+    while (!q.empty()) {
+        int t = q.front();
+        q.pop();
+        res.push_back(t);
+
+        vector<int> tt;
+        for (int i = h[t]; i != -1; i = ne[i]) {
+            int j = e[i];
+            tt.push_back(j);
+        }
+        sort(tt.begin(), tt.end());
+
+        for (auto j : tt) {
+            if (!vis[j]) {
+                vis[j] = true;
+                q.push(j);
+            }
+        }
+    }
+}
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+
+    memset(h, -1, sizeof h);
+    memset(vis, 0, sizeof vis);
+
+    for (int i = 0; i < m; i++) {
+        int a, b;
+        cin >> a >> b;
+        add(a, b);
+        add(b, a);
+    }
+
+    for (int i = 0; i < n; i++) {
+        if (!vis[i]) {
+            res.clear();
+            dfs(i);
+            cout << "{ ";
+            for (auto elem : res) {
+                cout << elem << " ";
+            }
+            cout << "}" << endl;
+        }
+    }
+
+    memset(vis, 0, sizeof vis);
+
+    for (int i = 0; i < n; i++) {
+        if (!vis[i]) {
+            res.clear();
+            bfs(i);
+            cout << "{ ";
+            for (auto elem : res) {
+                cout << elem << " ";
+            }
+            cout << "}" << endl;
+        }
+    }
+
+    return 0;
+}
+*/
