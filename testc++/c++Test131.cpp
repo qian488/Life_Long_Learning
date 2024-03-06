@@ -4,41 +4,35 @@
 using namespace std;
 //pta贪心专场--book
 //构造
+typedef long long ll;
 const int N = 1e5 + 10;
-int f[N],A[N],sa[N],d[N];
-bool vis[N];
+ll f[N],A[N],sa[N];
+bool vis[N];//1表示-b,0表示+a操作
 int main()
 {
     int n;
     cin >> n;
-    int a, b, m, sum;
+    int a, b, m;
     cin >> f[1] >> a >> b >> m;
-    sum = n * f[1];
-    for (int i = 1; i <= n;i++)
-    {
-        A[i] = A[i-1]+a;
-        cout<<A[i]<<" ";
-    }
-    cout<<"\n";
-    for (int i = 1; i <= n;i++)
-    {
-        sa[i] = sa[i-1]+A[i];
-        cout<<sa[i]<<" ";
-    }
-    cout<<"\n";
-    sum += sa[n-1];
-    cout << sum << " ";
+    ll sum = n * f[1];
+    for (int i = 2; i <= n;i++) A[i] = A[i-1]+a;
+    for (int i = 1; i <= n;i++) sa[i] = sa[i-1]+A[i];
+    sum += sa[n];
+    cout << sum << "\n";
+    vis[1] = 0;
     for(int i=2;i<=n;i++)
     {
-        d[i]=-(a+b);
-    }
-    for(int i=1;i<=n;i++)
-    {
-        if(sum!=m)
-        for(int j=i;j<=n;j++)
+        if(sum>m)
         {
-            sum+=d[j];
+            sum-=(n-i+1)*(a+b);
+            vis[i]=1;
         }
+        else if(sum<m)
+        {
+            sum+=(n-i+1)*(a+b);
+            vis[i-1]=0;
+        }
+        else if(sum==m) break;
     }
 
     cout << f[1] << " ";
