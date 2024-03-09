@@ -16,17 +16,17 @@ typedef pair<ll, ll> pll;
 #define endl "\n"
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N = 1e6 + 10;
-
+int stk[N], tt = 0;
+//AtCoder Beginner Contest 344_B.Delimiter
+//确实有点慢啊
 int main()
 {
     int t;
-    cin >> t;
-    while (t--)
+    while(cin>>t)
     {
-        int n;
-        cin >> n;
-        
+        stk[++tt] = t;
     }
-    
+    while(tt--)
+        cout << stk[tt] << endl;
     return 0;
 }

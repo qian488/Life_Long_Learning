@@ -16,17 +16,15 @@ typedef pair<ll, ll> pll;
 #define endl "\n"
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N = 1e6 + 10;
-
+//AtCoder Beginner Contest 344_A.Spoiler
+//脑抽了。。。
 int main()
 {
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        int n;
-        cin >> n;
-        
-    }
-    
+    string s, ans = "";
+    cin >> s;
+    int l = s.find('|');
+    int r = s.find('|', l + 1);
+    ans += s.substr(0, l) + s.substr(r+1);
+    cout << ans;
     return 0;
 }

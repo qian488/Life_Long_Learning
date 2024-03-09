@@ -17,36 +17,34 @@ typedef pair<ll, ll> pll;
 #define endl "\n"
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N = 1e6 + 10;
-int a[N];
-int lowbit(int x){return x&-x;}
-
+vector<string> v;
 void solve()
 {
+    string t, ans = "";
+    cin >> t;
     int n;
-    cin>>n;
-    ll ans=0;
-    for(int i=1;i<=n;i++)
+    cin >> n;
+    int cnt = 0;
+    while (n--)
     {
-      cin>>a[i];
-    }
-    for(int i=1;i<=n;i++)
-    {
-      for(int j=i+1;j<=n;j++)
-      {
-        if(lowbit(a[i]+a[j])==a[i]+a[j])ans++;
-        //cout << lowbit(a[i] + a[j]) << " ";
-      }
-      
+        int m;
+        cin >> m;
+        for (int i = 0; i < m;i++)
+        {
+            string s;
+            cin >> s;
+            v.push_back(s);
+        }
+
     }
     
-    cout<<ans;
 }
 
 int main()
 {
     ios
     solve();
-    //蓝桥第 7 场 小白入门赛 
-    //其实可以考虑双指针优化的，但是不会。。。
+    //AtCoder Beginner Contest 344_D.String Bags
+    //string背包？
     return 0;
 }
