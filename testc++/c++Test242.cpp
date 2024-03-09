@@ -46,5 +46,6 @@ int main()
     solve();
     //AtCoder Beginner Contest 344_D.String Bags
     //string背包？
+    //DP
     return 0;
 }

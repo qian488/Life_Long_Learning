@@ -17,26 +17,30 @@ typedef pair<ll, ll> pll;
 #define endl "\n"
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N = 1e6 + 10;
-//head存储链表头，e[]存储节点值，ne[]存储节点的next指针，idx表示当前索引用到了哪个节点
-int head,e[N],ne[N],idx;
+//e[]表示节点的值，l[]表示节点的左指针，r[]表示节点的右指针，idx表示当前索引用到了哪个节点
+int e[N],l[N],r[N],idx;
 
 //初始化
 void init()
 {
-    head=-1;
-    idx=0;
+    //0是左端点，1是右端点
+    r[0]=1,l[1]=0;
+    idx=2;
 }
 
-//在链表头插入一个数a
-void insert(int a)
+//在节点a的右边插入一个数x
+void insert(int a,int x)
 {
-    e[idx]=a,ne[idx]=head,head=idx++;
+    e[idx]=x;
+    l[idx]=a,r[idx]=r[a];
+    l[r[a]]=idx,r[a]=idx++;
 }
 
-//将头节点删除，需要保证头节点存在
-void remove()
+//删除节点a
+void remove(int a)
 {
-    head=ne[head];
+    l[r[a]]=l[a];
+    r[l[a]]=r[a];
 }
 
 void solve()
@@ -68,7 +72,7 @@ void solve()
             insert(x, y);
         }
     }
-    
+    //遍历链表输出
 }
 
 int main()
