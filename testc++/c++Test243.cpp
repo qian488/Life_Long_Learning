@@ -17,30 +17,58 @@ typedef pair<ll, ll> pll;
 #define endl "\n"
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N = 1e6 + 10;
-//e[]表示节点的值，l[]表示节点的左指针，r[]表示节点的右指针，idx表示当前索引用到了哪个节点
-int e[N],l[N],r[N],idx;
-
+//head存储链表头，e[]存储节点值，ne[]存储节点的next指针，idx表示当前索引用到了哪个节点
+int head,e[N],ne[N],idx;
+int A[N];
 //初始化
 void init()
 {
-    //0是左端点，1是右端点
-    r[0]=1,l[1]=0;
-    idx=2;
+    head=-1;
+    idx=0;
 }
 
-//在节点a的右边插入一个数x
-void insert(int a,int x)
+//头插法
+//在链表头插入一个数a
+void insert(int a)
 {
-    e[idx]=x;
-    l[idx]=a,r[idx]=r[a];
-    l[r[a]]=idx,r[a]=idx++;
+    e[idx]=a,ne[idx]=head,head=idx++;
 }
 
-//删除节点a
-void remove(int a)
+//将头节点删除，需要保证头节点存在
+//删除节点
+void remove(int x)
 {
-    l[r[a]]=l[a];
-    r[l[a]]=r[a];
+    // 查找要删除节点的前一个节点
+    for (int i = head; ne[i] != -1;i = ne[i])
+    {
+        if (e[ne[i]] == x) 
+        {
+            // 找到要删除节点的前一个节点
+            ne[i] = ne[x];
+            ne[x] = -1;
+            return;
+        }
+        
+    }
+
+}
+
+//在a后边加入b
+void insert(int a,int b)
+{
+    // 查找要插入节点的前一个节点
+    for (int i = head; ne[i] != -1;i = ne[i])
+    {
+        if (e[ne[i]] == a) 
+        {
+            // 找到要插入节点的前一个节点
+            ne[++head] = ne[i];
+            e[head] = b;
+            ne[i] = head;
+            return;
+        }
+        
+    }
 }
 
 void solve()
@@ -48,31 +76,51 @@ void solve()
     int n;
     cin >> n;
     init();
-    while(n--)
+    
+    for (int i = 0; i < n;i++)
     {
         int x;
         cin >> x;
         insert(x);
     }
+    
+    /*
+    for (int i = 0; i < n;i++) cin >> A[i];
+    for (int i = n - 1; i >= 0;i--) insert(A[i]);
+    */
+    for(auto i:e)if(i!=0)cout << i << " ";
+    cout << endl;
+    for(auto i:ne)if(i!=0)cout << i << " ";
+    cout << endl;
+
     int q;
+    cin >> q;
     while (q--)
     {
         int op;
         cin >> op;
         if (op==2)
-        {
+        {//删除x元素
             int x;
             cin >> x;
             remove(x);
         }
         else if(op==1)
-        {
+        {//在x后插入y
             int x, y;
             cin >> x >> y;
             insert(x, y);
         }
+        for(int i=head;i!=-1;i=ne[i]) cout << e[i] << " ";
+        cout << endl;
     }
+    for(auto i:e)if(i!=0)cout << i << " ";
+    cout << endl;
+    for(auto i:ne)if(i!=0)cout << i << " ";
+    cout << endl;
     //遍历链表输出
+    for(int i=head;i!=-1;i=ne[i]) cout << e[i] << " ";
+    cout << endl;
 }
 
 int main()
@@ -80,6 +128,6 @@ int main()
     ios
     solve();
     //AtCoder Beginner Contest 344_E.Insert or Erase
-    //链表
+    //手撕链表
     return 0;
 }

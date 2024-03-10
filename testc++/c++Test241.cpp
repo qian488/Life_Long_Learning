@@ -17,21 +17,24 @@ typedef pair<ll, ll> pll;
 #define endl "\n"
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N = 1e6 + 10;
-
+set<int> sumABC;
 void solve()
 {
+    
     int n;
     cin >> n;
     vector<int> a(n);
     for (int i = 0; i < n;i++) cin >> a[i];
     int m;
+    cin >> m;
     vector<int> b(m);
     for (int i = 0; i < m;i++) cin >> b[i];
     int l;
+    cin >> l;
     vector<int> c(l);
     for (int i = 0; i < l;i++) cin >> c[i];
 
-    set<int> sumABC;
+    
     for (int i = 0; i < n; i++) 
     {
         for (int j = 0; j < m; j++) 
@@ -42,7 +45,7 @@ void solve()
             }
         }
     }
-
+    
     int q;
     cin >> q;
     while(q--)
@@ -67,5 +70,6 @@ int main()
     solve();
     //AtCoder Beginner Contest 344_C.A+B+C
     //不知道怎么优化,不知道为什么出不来结果,感觉没毛病
+    //我傻逼了，输入都忘了。。。
     return 0;
 }

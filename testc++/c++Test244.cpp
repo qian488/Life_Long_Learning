@@ -17,36 +17,25 @@ typedef pair<ll, ll> pll;
 #define endl "\n"
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N = 1e6 + 10;
-int a[N];
-int lowbit(int x){return x&-x;}
-
+int a[N],b[N];
 void solve()
 {
-    int n;
-    cin>>n;
-    ll ans=0;
-    for(int i=1;i<=n;i++)
+    int k, n;
+    cin >> k >> n;
+    ll ans = 0;
+    for (int i = 0; i < k; i++)
     {
-      cin>>a[i];
-    }
-    for(int i=1;i<=n;i++)
-    {
-      for(int j=i+1;j<=n;j++)
-      {
-        if(lowbit(a[i]+a[j])==a[i]+a[j])ans++;
-        //cout << lowbit(a[i] + a[j]) << " ";
-      }
-      
+        cin >> a[i] >> b[i];
     }
     
-    cout<<ans;
+    cout << ans;
 }
 
 int main()
 {
     ios
     solve();
-    //蓝桥第 7 场 小白入门赛_4.可结合的元素对
-    //其实可以考虑双指针优化的，但是不会。。。算了，暂时过了就行。
+    //蓝桥第 7 场 小白入门赛_5.兽之泪
+    //可以暴力模拟，其实就是贪心策略+分类，看要不要打最后一个，选取打和不打的情况下的最小值即可
     return 0;
 }
