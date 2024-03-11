@@ -19,7 +19,7 @@ typedef pair<ll, ll> pll;
 const int N = 1e6 + 10;
 //head存储链表头，e[]存储节点值，ne[]存储节点的next指针，idx表示当前索引用到了哪个节点
 int head,e[N],ne[N],idx;
-int A[N];
+
 //初始化
 void init()
 {
@@ -48,9 +48,7 @@ void remove(int x)
             ne[x] = -1;
             return;
         }
-        
     }
-
 }
 
 //在a后边加入b
@@ -62,12 +60,11 @@ void insert(int a,int b)
         if (e[ne[i]] == a) 
         {
             // 找到要插入节点的前一个节点
-            ne[++head] = ne[i];
-            e[head] = b;
-            ne[i] = head;
+            e[idx] = b;
+            ne[idx] = ne[i];
+            ne[i] = idx++;
             return;
         }
-        
     }
 }
 
@@ -83,16 +80,12 @@ void solve()
         cin >> x;
         insert(x);
     }
-    
     /*
-    for (int i = 0; i < n;i++) cin >> A[i];
-    for (int i = n - 1; i >= 0;i--) insert(A[i]);
-    */
     for(auto i:e)if(i!=0)cout << i << " ";
     cout << endl;
     for(auto i:ne)if(i!=0)cout << i << " ";
     cout << endl;
-
+    */
     int q;
     cin >> q;
     while (q--)
@@ -111,16 +104,29 @@ void solve()
             cin >> x >> y;
             insert(x, y);
         }
+        /*
         for(int i=head;i!=-1;i=ne[i]) cout << e[i] << " ";
         cout << endl;
+        */
     }
+    /*
     for(auto i:e)if(i!=0)cout << i << " ";
     cout << endl;
     for(auto i:ne)if(i!=0)cout << i << " ";
     cout << endl;
+    */
     //遍历链表输出
+    vector<int> ans;
+    for(int i=head;i!=-1;i=ne[i]) ans.push_back(e[i]);
+    reverse(ans.begin(), ans.end());
+    for(auto e:ans)
+    {
+        cout << e << " ";
+    }
+    /*
     for(int i=head;i!=-1;i=ne[i]) cout << e[i] << " ";
     cout << endl;
+    */
 }
 
 int main()
@@ -129,5 +135,8 @@ int main()
     solve();
     //AtCoder Beginner Contest 344_E.Insert or Erase
     //手撕链表
+    //手撕失败。。。只能过一个样例。。。TLE
+    //本质上是查找太耗时间了，需要用map来维护，实现快速查找。
+    //之后再看看怎么写吧。。。
     return 0;
 }
