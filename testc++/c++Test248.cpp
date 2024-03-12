@@ -26,9 +26,25 @@ void solve()
     {
         int n;
         cin >> n;
-        for (int i = 1; i <= n;i++) cin >> a[i];
-        bool flag = ture;
-        int c[3] = {-1, -2, -1};
+        for (int i = 0; i < n;i++) cin >> a[i];
+        bool flag = true;
+        for (int i = 1; i < n-1;i++)
+        {
+            int x=0;
+            if(a[i-1]>0) x = a[i - 1];
+            a[i - 1] -= x;
+            a[i] -= 2 * x;
+            a[i + 1] -= x;
+        }
+        for (int i = 0; i < n;i++)
+        {
+            if (a[i]!=0)
+            {
+                flag = false;
+                break;
+            }
+            
+        }
         
             if (flag)
             {
@@ -36,7 +52,7 @@ void solve()
             }
             else
             {
-                coout << "NO" << endl;
+                cout << "NO" << endl;
             }
     }
     
@@ -46,7 +62,7 @@ int main()
 {
     ios
     solve();
-    //Codeforces Round 933 (Div. 3)
+    //Codeforces Round 933 (Div. 3)_B.Rudolf and 121
     //有点怪
     return 0;
 }

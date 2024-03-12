@@ -50,7 +50,7 @@ int main()
 {
     ios
     solve();
-    //Codeforces Round 933 (Div. 3)
+    //Codeforces Round 933 (Div. 3)_A.Rudolf and the Ticket
     
     return 0;
 }
