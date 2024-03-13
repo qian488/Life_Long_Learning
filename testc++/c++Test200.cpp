@@ -1,38 +1,34 @@
 #include<iostream>
-
+#include<algorithm>
 using namespace std;
 //牛客周赛 Round 31 --小红的字符串中值
-//还是超时
+//还是超时,只能过33%
+/*题解
+思路: 枚举
+对于i个字符，如果其为目标字符
+则可提供的奇数子字符串数位：
+min(i+1,n - i)
+不过，为什么呢？
+*/
 typedef long long ll;
-char chr;
-bool check(string s)
-{
-    int len = s.length();
-    return s[len / 2] == chr;
-}
 int main()
 {
     int n;
+    char chr;
     cin >> n >> chr;
     string s;
     cin >> s;
     ll ans = 0;
-    for (int l = 1; l <= n; l++)
+    for (int i = 0; i < n; i++)
     {
-        for (int i = 0; i <= n - l; i++)
+        if (s[i]==chr)
         {
-            int j = i + l - 1;
-            string st = s.substr(i, l);
-            //cout << st << endl;
-            if (st.length()%2==1)
-            {
-                if (check(st))
-                {
-                    ans++;
-                }
-            }
+            ll d = min(i, n - i - 1) + 1;
+            ans += d;
         }
+        
     }
+    
     cout << ans;
     return 0;
 }
