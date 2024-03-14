@@ -5,7 +5,6 @@
 #include<vector>
 #include<map>
 #include<set>
-#include<unordered_set>
 #include<queue>
 #include<string>
 using namespace std;
@@ -21,21 +20,13 @@ const int N=1e6+10;
 
 void Solve()
 {
-    int n, k;
-    cin >> n >> k;
     
 }
 
 int main()
 {
-    ios 
-    int T;
-    cin >> T;
-    while (T--)
-    {
-        Solve();
-    }
-    //Codeforces Round 928 (Div. 4)_E. Vlad and an Odd Ordering
-    //按规则操作后获得一个顺序，输出指定位置的数
+    ios
+    Solve();
+    //牛客周赛 Round 34_C小红的数字拆解
     return 0;
 }
