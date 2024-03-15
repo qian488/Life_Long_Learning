@@ -37,5 +37,6 @@ int main()
     }
     //Codeforces Round 928 (Div. 4)_E. Vlad and an Odd Ordering
     //按规则操作后获得一个顺序，输出指定位置的数
+    //好难想
     return 0;
 }

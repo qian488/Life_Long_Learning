@@ -4,7 +4,9 @@
 #include<cmath>
 #include<vector>
 #include<map>
+#include<unordered_map>
 #include<set>
+#include<unordered_set>
 #include<queue>
 #include<string>
 using namespace std;
@@ -22,30 +24,27 @@ void Solve()
 {
     int n;
     cin >> n;
-    vector<int> v(n);
-    for (int i = 0; i < n;i++) cin >> v[i];
-    set<int> s;
-    for(auto e:v)
+    vector<vector<char>> g(2, vector<char>(n));
+    for (int i = 0; i < 2;i++)
     {
-        if(e>=1&&e<=n) s.insert(e);
-    }
-    if (s.size()!=n)
-    {
-        cout << 0 << endl;
-    }
-    else
-    {
-        cout << 1 << endl;
-        cout << 1 << " " << n + 1 << endl;
+        for (int j = 1; j <= n;j++)
+        {
+            cin >> g[i][j];
+        }
     }
     
+
 }
 
 int main()
 {
-    ios
-    Solve();
-    //牛客周赛 Round 34_B小红的非排列构造
-    //emmm,考思维的一题
+    ios 
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        Solve();
+    }
+    //
     return 0;
 }
