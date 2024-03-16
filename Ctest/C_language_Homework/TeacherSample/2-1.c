@@ -13,7 +13,6 @@ struct student *queryNode(struct student *head, int xh)
 
 
 
-
 struct student *delNode(struct student *head, struct student *delNode)
 {
 	struct student *p1,*p2;

@@ -33,18 +33,18 @@ void Solve()
     }
     bool flag = true;
     vector<int> ans;
-    for (int i = 0; i < n-1;i++)
+    int pos = -1;
+    for (int i = 0; i < n-1;i++) if (v[i]>v[i+1]) pos = i;
+    for (int i = 0; i <= pos;i++)
     {
-        bool tt = true;
-        if (v[i]>9&&v[i]>v[i+1])
+        if (v[i]>9)
         {
-            tt = false;
             ans.push_back(v[i] / 10);
             ans.push_back(v[i] % 10);
         }
-        if(tt) ans.push_back(v[i]);
+        else ans.push_back(v[i]);
     }
-    ans.push_back(v[n - 1]);
+    for (int i = pos+1; i < n;i++) ans.push_back(v[i]);
     for (int i = 1; i < ans.size();i++)
     {
         if(ans[i]<ans[i-1]) 
@@ -68,6 +68,6 @@ int main()
         Solve();
     }
     
-    //
+    //Educational Codeforces Round 163 (Rated for Div. 2)_B.Array Fix
     return 0;
 }

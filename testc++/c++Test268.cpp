@@ -20,44 +20,39 @@ typedef pair<ll,ll> pll;
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N=1e6+10;
 
-string StringBuilding(int n)
-{
-    if (n%2==1) return "";
-    else if(n==2) return "AA";
-    else if(n%2==0)
-    {
-        string p = "AABB";
-        string tt = p;
-        while (tt.length()<n) tt += p;
-        return tt.substr(0, n);
-    }
-}
 
 void Solve()
 {
-    int n;
-    cin >> n;
-    string ans = StringBuilding(n);
-    if(!ans.empty())
+    int T;
+    cin >> T;
+    while (T--)
     {
-        cout << "YES" << endl;
+        int n;
+        cin >> n;
+        map<int, int> m;
+        vector<int> a(n);
+        for (int i = 0; i < n;i++) 
+        {
+            cin >> a[i];
+            m[a[i]]++;
+        }
+        sort(a.begin(), a.end());
+        int ans = 1;
+        for (int i = 0; i < n;i++)
+        {
+            if(m[a[i]]>1) ans = a[i] + 1;
+        }
+
         cout << ans << endl;
+        
     }
-    else
-    {
-        cout << "NO" << endl;
-    }
+    
 }
 
 int main()
 {
     ios 
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        Solve();
-    }
-    //Educational Codeforces Round 163 (Rated for Div. 2)_A.Special Characters
+    Solve();
+    //
     return 0;
 }
