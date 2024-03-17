@@ -36,13 +36,24 @@ void Solve()
             cin >> a[i];
             m[a[i]]++;
         }
-        sort(a.begin(), a.end());
-        int ans = 1;
-        for (int i = 0; i < n;i++)
+        //sort(a.begin(), a.end());
+        int ans, last;
+        vector<int> tt;
+        for (int i = 0; i <= n + 1; i++)
         {
-            if(m[a[i]]>1) ans = a[i] + 1;
+            if(m[i]==0) 
+            {
+                last = i;
+                break;
+            }
+            else if(m[i]==1)
+            {
+                tt.push_back(i);
+            }
         }
-
+        if(tt.size()>1) ans = tt[1];
+        else ans = last;
+         
         cout << ans << endl;
         
     }
@@ -53,6 +64,6 @@ int main()
 {
     ios 
     Solve();
-    //
+    //Codeforces Round 934 (Div. 2)_C.MEX Game 1
     return 0;
 }

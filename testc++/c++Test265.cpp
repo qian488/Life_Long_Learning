@@ -23,12 +23,12 @@ const int N=1e6+10;
 
 void Solve()
 {
-    //string s;
-    //cin >> s;
-    //int n = s.length() - 1;
-    //set<string> ans;
+    string s;
+    cin >> s;
+    int n = s.length() - 1;
+    unordered_set<string> ans;
     //11个测试点
-    /*
+    
     for (int i = 0; i <= n; i++)
     {
         for (int j = i+1; j <= n; j++)
@@ -42,7 +42,7 @@ void Solve()
         
     }
     cout << ans.size() << endl;
-    */
+    
    /*11个测试点
     int n = s.length() - 1;
     unordered_set<string> ans;
@@ -60,43 +60,12 @@ void Solve()
 
     cout << ans.size() << endl;
     */
-    string s;
-    cin>>s;
-    unordered_map<char, int> m;
-    for(char c:s) m[c]++;
-    vector<int> v;
-    for(auto e:m) v.push_back(e.second);
-    ll ans = 1;
-    bool flag = false;
-    for(auto e:v)
-    {
-        if (e>1)
-        {
-            flag=true;
-            break;
-        }
-        
-    }
-    if(flag)
-    {
-        ans = 0;
-        for (int i = 0; i < v.size(); i++)
-        {
-            for (int j = i+1; j < v.size(); j++)
-            {
-                ans += v[i] * v[j];
-            }
-            
-        }
-        
-    }
-    cout << ans << endl;
 }
 
 int main()
 {
     ios 
     Solve();
-    //
+    //AtCoder Beginner Contest 345_C.One Time Swap
     return 0;
 }

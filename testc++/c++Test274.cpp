@@ -23,26 +23,13 @@ const int N=1e6+10;
 
 void Solve()
 {
-    ll X;
-    cin >> X;
-    //9个测试点
-    //ll ans = (ll)ceil(a/10);
-    //cout << ans << endl;
-    //15个测试点
-    /*
-    ll t = (a + 9) / 10;
-    cout << t << endl;
-    */
-    //ac
-    ll result = X / 10;
-    if (X > 0 && X % 10 != 0) result += 1;
-    cout << result << endl;
+    
 }
 
 int main()
 {
     ios 
     Solve();
-    //AtCoder Beginner Contest 345_B.Integer Division Returns
+    //
     return 0;
 }

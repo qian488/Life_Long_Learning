@@ -65,6 +65,6 @@ int main()
 {
     ios 
     Solve();
-    //
+    //Codeforces Round 934 (Div. 2)_B.Equal XOR
     return 0;
 }

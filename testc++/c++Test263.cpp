@@ -37,6 +37,6 @@ int main()
 {
     ios 
     Solve();
-    //
+    //AtCoder Beginner Contest 345_A.Leftrightarrow
     return 0;
 }

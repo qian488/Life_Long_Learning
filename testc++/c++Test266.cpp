@@ -41,6 +41,6 @@ int main()
 {
     ios 
     Solve();
-    //
+    //Codeforces Round 934 (Div. 2)_A.Destroying Bridges
     return 0;
 }
