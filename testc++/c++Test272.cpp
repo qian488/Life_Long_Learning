@@ -23,13 +23,23 @@ const int N=1e6+10;
 
 void Solve()
 {
-    
+    int n, m, k;
+    cin >> n >> m >> k;
+    while (m--)
+    {
+        int l, r;
+        cin >> l >> r;
+        
+    }
+    string s;
+    cin >> s;
+
 }
 
 int main()
 {
     ios 
     Solve();
-    //
+    //莞工天梯赛预选赛_H.往下往下往下
     return 0;
 }

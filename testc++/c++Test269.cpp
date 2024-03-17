@@ -23,13 +23,58 @@ const int N=1e6+10;
 
 void Solve()
 {
+    string s;
+    string ans;
+    while (cin>>s)
+    {
+        if (s=="-o")
+        {
+            cin >> ans;
+            cout << ans << endl;
+            break;
+        }
+        
+    }
     
+    /*
+    string t;
+    cin.clear();
+    getline(cin, t);
+    string s="";
+    for (int i = 0; i < t.length(); i++)
+    {
+        if (t[i]=='-'&&t[i+1]=='o')
+        {
+            i++;
+            while (i<t.length())
+            {
+                i++;
+                if (t[i]!=' ')
+                    break;
+            }
+            i--;
+            while(i<t.length())
+            {
+                i++;
+                if (t[i]!=' ')
+                {
+                    s += t[i];
+                }
+                else break;
+            }
+            break;
+        }
+    }
+
+    cout << s << endl;
+    */
 }
 
 int main()
 {
     ios 
     Solve();
-    //
+    //莞工天梯赛预选赛_D.命令行是yyds	
+    //耻辱的一题
     return 0;
 }

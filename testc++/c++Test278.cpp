@@ -30,6 +30,6 @@ int main()
 {
     ios 
     Solve();
-    //莞工天梯赛预选赛_J.梅易天每一天都喝每益添
+    //
     return 0;
 }
