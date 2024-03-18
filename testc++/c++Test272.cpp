@@ -20,20 +20,34 @@ typedef pair<ll,ll> pll;
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N=1e6+10;
 
-
 void Solve()
 {
     int n, m, k;
     cin >> n >> m >> k;
-    while (m--)
+    vector<int> l(m+1), r(m+1);
+    for (int i = 1; i <= m;i++)
     {
-        int l, r;
-        cin >> l >> r;
-        
+        cin >> l[i] >> r[i]; 
     }
-    string s;
-    cin >> s;
-
+    string s="R";
+    string st;
+    cin >> st;
+    s += st;
+    int t = 1, pos = 0;
+    for(char ch:s)
+    {
+        if (ch=='L'&&pos>1) pos--;
+        if (ch=='R'&&pos<n) pos++;
+        while (t<m+1&&(pos<l[t]||pos>r[t])) t++;
+    }
+    if (t==m+1)
+    {
+        cout << -1 << endl;
+    }
+    else
+    {
+        cout << t << endl;
+    }
 }
 
 int main()

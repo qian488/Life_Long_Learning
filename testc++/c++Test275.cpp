@@ -23,7 +23,34 @@ const int N=1e6+10;
 
 void Solve()
 {
-    
+    int n;
+    cin>>n;
+    ll sum = 0, maxn = 0;
+    for (int i = 0; i < n; i++)
+    {
+        ll x;
+        cin >> x;
+        sum += x;
+        maxn = max(maxn, x);
+    }
+    ll tt = sum - maxn;
+    ll ans=0;
+    if (maxn>tt)
+    {
+        ans = 2 * tt;
+    }
+    else if(maxn<=tt)
+    {
+        if (sum%2==1)
+        {
+            ans = sum - 1;
+        }
+        else
+        {
+            ans = sum;
+        }
+    }
+    cout << ans << endl;
 }
 
 int main()

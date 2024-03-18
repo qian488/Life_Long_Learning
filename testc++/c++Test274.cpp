@@ -23,6 +23,56 @@ const int N=1e6+10;
 
 void Solve()
 {
+    int n;
+    cin >> n;
+
+    vector<vector<int>> Necklace;
+    deque<int> Pole;
+
+    while (n--)
+    {
+        char ch;
+        int num;
+        cin >> ch >> num;
+        if(num)
+        {
+            if (ch=='L') Pole.push_front(num);
+            else if(ch=='R') Pole.push_back(num);
+        }
+        else
+        {
+            vector<int> tt;
+            if (ch=='L')
+            {
+                while (Pole.size()&&Pole.front())
+                {
+                    tt.push_back(Pole.front());
+                    Pole.pop_front();
+                }
+                
+            }
+            else if(ch=='R')
+            {
+                while (Pole.size()&&Pole.back())
+                {
+                    tt.push_back(Pole.back());
+                    Pole.pop_back();
+                }
+                
+            }
+            if (Pole.empty()) Pole.push_back(0);
+            Necklace.push_back(tt);
+        }
+    }
+    for (auto e:Necklace)
+    {
+        cout << e.size() << " ";
+        for(auto elem:e)
+        {
+            cout << elem << " ";
+        }
+        cout << endl;
+    }
     
 }
 
