@@ -23,6 +23,32 @@ const int N=1e6+10;
 
 void Solve()
 {
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n;
+        cin >> n;
+        vector<int> a(n+1);
+        for (int i = 1; i <= n; i++) cin >> a[i];
+
+        sort(a.begin(), a.end());
+        int kk = ((n + 1) / 2);
+        int med = a[kk];
+        int cnt = 0;
+        for (int i = 1; i <= n; i++)
+        {
+            if (a[i] < med) cnt++;
+        }
+        int ans = 0;
+        int cnt_eq = count(a.begin(), a.end(), med);
+        if (cnt < kk) ans = kk - cnt;
+
+        if(cnt_eq%2==0) ans++;
+
+        cout << ans << endl;
+        
+    }
     
 }
 
@@ -30,6 +56,7 @@ int main()
 {
     ios 
     Solve();
-    //
+    //Codeforces Round 936 (Div. 2)
+    //今晚是失败的一晚。。。
     return 0;
 }
