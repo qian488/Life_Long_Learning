@@ -6,6 +6,7 @@
 #include<time.h>
 
 //游戏选项
+#define EXIT 0
 #define ROCK 1
 #define PAPER 2
 #define SCISSORS 3
@@ -25,18 +26,30 @@ int main()
     //打印游戏说明
     print_instructions();
 
-    //获取玩家和计算机的选择
-    uint32_t player_move = get_player_move();
-    uint32_t computer_move = get_computer_move();
+    uint32_t player_move;
+    uint32_t computer_move;
+    while(1)
+    {
+       //获取玩家和计算机的选择
+       player_move = get_player_move();
+       computer_move = get_computer_move();
 
-    //展示玩家与计算机的选择
-    puts("你选择了");
-    print_move(player_move);
-    puts("计算机选择了");
-    print_move(computer_move);
+       //退出游戏选项
+       if(player_move==EXIT) break;
 
-    //判断输赢
-    determine_winner(player_move, computer_move);
+        //展示玩家与计算机的选择
+        puts("你选择了");
+        print_move(player_move);
+        puts("计算机选择了");
+        print_move(computer_move);
+
+        //判断输赢
+        determine_winner(player_move, computer_move);
+
+    }
+
+    puts("游戏已退出");
+
     return 0;
 }
 
@@ -51,12 +64,14 @@ void print_instructions()
 uint32_t get_player_move()
 {
     uint32_t move;
-    printf("请选择1石头，2布，3剪刀：\n");
+    printf("请选择1石头，2布，3剪刀(0退出游戏)：\n");
     scanf("%d", &move);
-
+    
     while (move < ROCK || move > SCISSORS)
     {
-        printf("无效选择！请重新选择：1石头，2布，3剪刀:\n");
+        if (move==EXIT) break;
+
+        printf("无效选择！请重新选择：1石头，2布，3剪刀(0退出游戏):\n");
         scanf("%d", &move);
     }
     

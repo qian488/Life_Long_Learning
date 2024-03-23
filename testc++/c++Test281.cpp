@@ -36,16 +36,12 @@ void Solve()
         int kk = ((n + 1) / 2);
         int med = a[kk];
         int cnt = 0;
-        for (int i = 1; i <= n; i++)
+        for (int i = kk; i <= n; i++)
         {
-            if (a[i] < med) cnt++;
+            if (a[i] == med) cnt++;
         }
-        int ans = 0;
-        int cnt_eq = count(a.begin(), a.end(), med);
-        if (cnt < kk) ans = kk - cnt;
-
-        if(cnt_eq%2==0) ans++;
-
+        int ans = cnt;
+        
         cout << ans << endl;
         
     }
@@ -56,7 +52,7 @@ int main()
 {
     ios 
     Solve();
-    //Codeforces Round 936 (Div. 2)
+    //Codeforces Round 936 (Div. 2)_A.Median of an Array
     //今晚是失败的一晚。。。
     return 0;
 }
