@@ -29,7 +29,7 @@ struct ListNode
 //函数声明
 void insert(struct ListNode **pointerToHead, struct ListNode **pointerToLastNode, char *name, double money);
 void printAllNodeInfo(struct ListNode *Node);
-void del_list(struct ListNode *Node, double delMoney);
+void del_list(struct ListNode **pointerToHead, double delMoney);
 struct ListNode *del_list_s(struct ListNode *Node, double delMoney);
 void freeList(struct ListNode *Node);
 
@@ -62,7 +62,7 @@ int main()
         freeList(list);
     }
     else{
-        del_list(list, del_money);
+        del_list(&list, del_money);
         printAllNodeInfo(list);
         freeList(list);
     }
@@ -108,16 +108,55 @@ void printAllNodeInfo(struct ListNode* Node)
 struct ListNode *del_list_s(struct ListNode *head, double delMoney)
 {
     struct ListNode *newList = NULL;
+    struct ListNode *newlastList = NULL;
     struct ListNode *tempNode = head;
+
+    while (tempNode!=NULL)
+    {
+        if (tempNode->money!=delMoney)
+        {
+            insert(&newList, &newlastList, tempNode->name, tempNode->money);
+        }
+        
+        tempNode = tempNode->next;
+    }
+    
 
     return newList;
 }
 
 //删除链表中等于delMoney的所有节点
-void del_list(struct ListNode *head, double delMoney)
+void del_list(struct ListNode **head, double delMoney)
 {
-    struct ListNode *tempNode = head;
+    struct ListNode *curr = *head;
+    struct ListNode *prev = NULL;
 
+    // 处理头节点的情况
+    while (curr != NULL && curr->money == delMoney) 
+    {
+        struct ListNode *temp = curr;
+        curr = curr->next;
+        free(temp);
+        *head = curr;
+    }
+
+    // 处理中间节点和尾节点的情况
+    prev = curr;
+    curr = curr->next;
+    while (curr != NULL) 
+    {
+        if (curr->money == delMoney) 
+        {
+            struct ListNode *temp = curr;
+            prev->next = curr->next;
+            curr = curr->next;
+            free(temp);
+        } else 
+        {
+            prev = curr;
+            curr = curr->next;
+        }
+    }
 }
 
 void freeList(struct ListNode *head)
