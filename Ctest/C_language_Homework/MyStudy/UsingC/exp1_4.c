@@ -12,8 +12,7 @@
 
 //思路
 //哦，这个不需要输入学生信息，只要输入成绩。。。？两种都写吧
-//用个开关表示 1表示只有输入成绩，0表示完整学生信息
-#define ONLY_SCORE 1
+
 #define MAXN 50
 
 typedef struct Student
@@ -25,59 +24,43 @@ typedef struct Student
 }Student;
 
 //函数声明
-Student *createNode(uint32_t id, char *name, double score);
+void freeList(Student *stu);
+
+#define ONLY_SCORE
+//用个开关表示 ONLY_SCORE表示只有输入成绩，不定义则表示完整学生信息
+#ifdef ONLY_SCORE
+
+//函数声明
 Student *createNode(double score);
 Student *createList(void);
 void printList(Student *head);
-void freeList(Student *stu);
 
 int main()
 {
     //创建链表
     Student *list1 = NULL;
     Student *list2 = NULL;
-    if (ONLY_SCORE)
-    {
-        printf("请输入 list1 的学生成绩（输入成绩为-1表示结束):\n");
-        list1 = createList();
-        printf("请输入 list2 的学生成绩（输入成绩为-1表示结束):\n");
-        list2 = createList();
-    }
-    else
-    {
-        printf("请输入 list1 的学生信息（输入学号为0表示结束):\n");
-        list1 = createList();
-        printf("请输入 list2 的学生信息（输入学号为0表示结束):\n");
-        list2 = createList();
-    }
+
+    printf("请输入 list1 的学生成绩（输入成绩为-1表示结束):\n");
+    list1 = createList();
+    printf("请输入 list2 的学生成绩（输入成绩为-1表示结束):\n");
+    list2 = createList();
 
     //输出链表
-    if (ONLY_SCORE)
-    {
-        printf(" list1 的学生成绩为：\n");
-        printList(list1);
-        printf(" list2 的学生成绩为：\n");
-        printList(list2);
-    }
-    else 
-    {
-        printf(" list1 的学生信息为：\n");
-        printList(list1);
-        printf(" list2 的学生信息为：\n");
-        printList(list2);
-    }
+    printf(" list1 的学生成绩为：\n");
+    printList(list1);
+    printf(" list2 的学生成绩为：\n");
+    printList(list2);
+
+    //排序链表
+    printf("排序后的 list1 的学生成绩为：\n");
+
+    printf("排序后的 list2 的学生成绩为：\n");
+
+    //拼接链表
+    printf("拼接 list1 和 list2 的结果为：\n");
 
     return 0;
-}
-
-Student *createNode(uint32_t id, char *name, double score)
-{
-    Student *newNode = (Student *)malloc(sizeof(Student));
-    newNode->ID = id;
-    strcpy(newNode->name, name);
-    newNode->score = score;
-    newNode->next = NULL;
-    return newNode;
 }
 
 Student *createNode(double score)
@@ -92,59 +75,24 @@ Student *createList(void)
 {
     Student *head = NULL;
     Student *tail = NULL;
-    uint32_t id;
-    char name[MAXN + 1];
     double score;
-
-    if (ONLY_SCORE)
+    while (1)
     {
-        while (1)
-        {
-            printf("请输入成绩(-1表示结束)：\n");
-            scanf("%lf", &score);
-            if (score==-1){
-                break;
-            }
-
-            Student *newNode = createNode(score);
-            if (head == NULL) 
-            {
-                head = tail = newNode;
-            }
-            else 
-            {
-                tail->next = newNode;
-                tail = newNode;
-            }
-            
+        printf("请输入成绩(-1表示结束)：\n");
+        scanf("%lf", &score);
+        if (score==-1){
+            break;
         }
-        
-    }
-    else
-    {
-        while(1)
+        Student *newNode = createNode(score);
+        if (head == NULL) 
         {
-            printf("请输入学号(输入0表示结束)：");
-            scanf("%" SCNu32 "", &id);
-            if(id==0){
-                break;
-            } 
-            printf("请输入姓名：");
-            scanf("%s", name);
-            printf("请输入成绩：");
-            scanf("%lf", &score);
-
-            Student *newNode = createNode(id, name, score);
-            if (head == NULL) 
-            {
-                head = tail = newNode;
-            }
-            else 
-            {
-                tail->next = newNode;
-                tail = newNode;
-            }
+            head = tail = newNode;
         }
+        else 
+        {
+            tail->next = newNode;
+            tail = newNode;
+        }   
     }
     return head;
 }
@@ -152,23 +100,105 @@ Student *createList(void)
 void printList(Student *head)
 {
     Student *p = head;
-    if (ONLY_SCORE)
+    while (p!=NULL)
     {
-        while (p!=NULL)
-        {
-            printf("%.2lf ", p->score);
-            p = p->next;
-        }
-        printf("\n");
+        printf("%.2lf ", p->score);
+        p = p->next;
     }
-    else
+    printf("\n");
+}
+
+
+#else 
+
+//函数声明
+Student *createNode(uint32_t id, char *name, double score);
+Student *createList(void);
+void printList(Student *head);
+
+int main()
+{
+    //创建链表
+    Student *list1 = NULL;
+    Student *list2 = NULL;
+
+    printf("请输入 list1 的学生信息（输入学号为0表示结束):\n");
+    list1 = createList();
+    printf("请输入 list2 的学生信息（输入学号为0表示结束):\n");
+    list2 = createList();
+
+    //输出链表
+    printf(" list1 的学生信息为：\n");
+    printList(list1);
+    printf(" list2 的学生信息为：\n");
+    printList(list2);
+
+    //排序链表
+    printf("按成绩排序后的 list1 的学生信息为：\n");
+
+    printf("按成绩排序后的 list2 的学生信息为：\n");
+
+    //拼接链表
+    printf("拼接 list1 和 list2 的结果为：\n");
+    
+    return 0;
+}
+
+Student *createNode(uint32_t id, char *name, double score)
+{
+    Student *newNode = (Student *)malloc(sizeof(Student));
+    newNode->ID = id;
+    strcpy(newNode->name, name);
+    newNode->score = score;
+    newNode->next = NULL;
+    return newNode;
+}
+
+Student *createList(void)
+{
+    Student *head = NULL;
+    Student *tail = NULL;
+    uint32_t id;
+    char name[MAXN + 1];
+    double score;
+
+    while(1)
     {
-        for(p = head;p!=NULL;p = p->next)//遍历 
+        printf("请输入学号(输入0表示结束)：");
+        scanf("%" SCNu32 "", &id);
+        if(id==0){
+            break;
+        } 
+        printf("请输入姓名：");
+        scanf("%s", name);
+        printf("请输入成绩：");
+        scanf("%lf", &score);
+
+        Student *newNode = createNode(id, name, score);
+        if (head == NULL) 
         {
-            printf("学号: %" PRIu32 " 姓名：%s 成绩：%.2lf\n", p->ID, p->name, p->score); // 输出
+            head = tail = newNode;
         }
+        else 
+        {
+            tail->next = newNode;
+            tail = newNode;
+        }
+    }
+    
+    return head;
+}
+
+void printList(Student *head)
+{
+    Student *p = head;
+    for(p = head;p!=NULL;p = p->next)//遍历 
+    {
+        printf("学号: %" PRIu32 " 姓名：%s 成绩：%.2lf\n", p->ID, p->name, p->score); // 输出
     }
 }
+
+#endif
 
 void freeList(Student *stu)
 {
