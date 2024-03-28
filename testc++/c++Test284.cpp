@@ -20,9 +20,74 @@ typedef pair<ll,ll> pll;
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N=1e6+10;
 
-
 void Solve()
 {
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n;
+        cin >> n;
+        for (int i = 1; i <= n; i++)
+        {
+            if (i%2==1)
+            {
+               for (int j = 1; j <= n; j++)
+           {
+            if (j%2==1)
+            {
+                cout << "##";
+            }
+            else{
+                 cout << "..";
+            }
+               
+              
+           }
+           cout << endl;
+           for (int j = 1; j <= n; j++)
+           {
+               if (j%2==1)
+            {
+                cout << "##";
+            }
+            else{
+                 cout << "..";
+            }
+              
+           }
+           cout << endl;
+            }
+            else{
+                for (int j = 1; j <= n; j++)
+           {
+               if (j%2==1)
+            {
+                cout << "..";
+            }
+            else{
+                 cout << "##";
+            }
+              
+           }
+           cout << endl;
+           for (int j = 1; j <= n; j++)
+           {
+               if (j%2==1)
+            {
+                cout << "..";
+            }
+            else{
+                 cout << "##";
+            }
+              
+           }
+           cout << endl;
+            }
+           
+        }
+        
+    }
     
 }
 
@@ -30,6 +95,6 @@ int main()
 {
     ios 
     Solve();
-    //
+    //Codeforces Round 937 (Div. 4)
     return 0;
 }

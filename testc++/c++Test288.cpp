@@ -27,19 +27,11 @@ void Solve()
     cin >> t;
     while (t--)
     {
-        int a, b, c;
-        cin >> a >> b >> c;
-        if (a<b&&b<c)
-        {
-            cout << "STAIR" << endl;
-        }
-        else if (a<b&&b>c)
-        {
-            cout << "PEAK" << endl;
-        }
-        else{
-            cout << "NONE" << endl;
-        }
+        int n;
+        cin >> n;
+        string s;
+        cin >> s;
+        
     }
     
 }
@@ -48,6 +40,6 @@ int main()
 {
     ios 
     Solve();
-    //Codeforces Round 937 (Div. 4)
+    //
     return 0;
 }

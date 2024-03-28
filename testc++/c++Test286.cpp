@@ -1,5 +1,6 @@
 #include<iostream>
 #include<algorithm>
+#include<iomanip>
 #include<cstring>
 #include<cmath>
 #include<vector>
@@ -20,6 +21,37 @@ typedef pair<ll,ll> pll;
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N=1e6+10;
 
+bool ttt(int x)
+{
+    int tt = x;
+    while (tt)
+    {
+        int d = tt % 10;
+        if (!(d==0||d==1))
+        {
+            return false;
+        }
+        tt /= 10;
+    }
+    return true;
+}
+
+bool check(int x)
+{
+    if (ttt(x))
+    {
+        return true;
+    }
+
+        bool flag = false;
+        int k = x;
+        while (k)
+        {
+            flag=ttt(k);
+            k /= 11;
+        }
+        return flag;
+}
 
 void Solve()
 {
@@ -27,18 +59,14 @@ void Solve()
     cin >> t;
     while (t--)
     {
-        int a, b, c;
-        cin >> a >> b >> c;
-        if (a<b&&b<c)
+        int n;
+        cin >> n;
+        if (check(n))
         {
-            cout << "STAIR" << endl;
-        }
-        else if (a<b&&b>c)
-        {
-            cout << "PEAK" << endl;
+            cout << "YES" << endl;
         }
         else{
-            cout << "NONE" << endl;
+            cout << "NO" << endl;
         }
     }
     
