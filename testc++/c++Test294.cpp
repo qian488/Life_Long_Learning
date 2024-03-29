@@ -1,4 +1,5 @@
 #include<iostream>
+#include<iomanip>
 #include<algorithm>
 #include<cstring>
 #include<cmath>
@@ -23,31 +24,14 @@ const int N=1e6+10;
 
 void Solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        int a, b, c;
-        cin >> a >> b >> c;
-        if (a<b&&b<c)
-        {
-            cout << "STAIR" << endl;
-        }
-        else if (a<b&&b>c)
-        {
-            cout << "PEAK" << endl;
-        }
-        else{
-            cout << "NONE" << endl;
-        }
-    }
     
 }
 
 int main()
 {
     ios 
+    
     Solve();
-    //Codeforces Round 937 (Div. 4)_A.Stair, Peak, or Neither?
+    //
     return 0;
 }

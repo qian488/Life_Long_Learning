@@ -40,6 +40,6 @@ int main()
 {
     ios 
     Solve();
-    //
+    //Codeforces Round 937 (Div. 4)_E.Nearly Shortest Repeating Substring
     return 0;
 }

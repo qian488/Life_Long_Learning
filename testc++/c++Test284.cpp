@@ -20,15 +20,9 @@ typedef pair<ll,ll> pll;
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N=1e6+10;
 
-void Solve()
+void printg(int n)
 {
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        int n;
-        cin >> n;
-        for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= n; i++)
         {
             if (i%2==1)
             {
@@ -86,7 +80,25 @@ void Solve()
             }
            
         }
-        
+}
+
+void Solve()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n;
+        cin >> n;
+        //printg(n);
+        for (int i = 0; i < n; i++) {
+            string s = "";
+            for (int j = 0; j < n; j++) {
+                s += ((i + j) % 2 == 0 ? "##" : "..");
+            }
+            cout << s << endl;
+            cout << s << endl;
+        }
     }
     
 }
@@ -95,6 +107,6 @@ int main()
 {
     ios 
     Solve();
-    //Codeforces Round 937 (Div. 4)
+    //Codeforces Round 937 (Div. 4)_B.Upscaling
     return 0;
 }
