@@ -24,14 +24,18 @@ const int N=1e6+10;
 
 void Solve()
 {
-    
+    cout << "printsafety" << endl;
 }
 
 int main()
 {
     ios 
-    
-    Solve();
+    int t = 1;
+    //cin >> t;
+    while (t--)
+    {
+        Solve();
+    }
     //
     return 0;
 }

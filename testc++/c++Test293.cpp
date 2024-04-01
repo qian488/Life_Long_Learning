@@ -21,9 +21,10 @@ typedef pair<ll,ll> pll;
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N=1e6+10;
 
-
 void Solve()
 {
+    string s;
+    cin >> s;
     
 }
 

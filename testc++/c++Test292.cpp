@@ -20,10 +20,18 @@ typedef pair<ll,ll> pll;
 #define endl "\n"
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N=1e6+10;
+#define P 20240401
 
 
 void Solve()
 {
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
     
 }
 

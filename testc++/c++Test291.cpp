@@ -24,7 +24,10 @@ const int N=1e6+10;
 
 void Solve()
 {
-    
+    string s;
+    cin >> s;
+    //cout << s;
+    cout << "?";
 }
 
 int main()
