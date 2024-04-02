@@ -24,26 +24,6 @@ const int N=1e6+10;
 
 void Solve()
 {
-    string s;
-    cin >> s;
-    bool k = false;
-    for (int i = 0; i + 1 < s.length(); i++)
-    {
-        if (s[i]=='i'&&s[i+1]=='t')
-        {
-            k = true;
-            break;
-        }
-        
-    }
-    if (k)
-    {
-        cout << "YES" << endl;
-    }
-    else
-    {
-        cout << "NO" << endl;
-    }
     
 }
 

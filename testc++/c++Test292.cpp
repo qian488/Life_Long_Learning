@@ -25,13 +25,7 @@ const int N=1e6+10;
 
 void Solve()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-    }
+    
     
 }
 
