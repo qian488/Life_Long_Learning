@@ -4,7 +4,7 @@ using namespace std;
 typedef long long ll;
 #define endl "\n"
 const int N=2e5+10;
-
+//错解
 int main()
 {
     int n;
@@ -33,6 +33,45 @@ int main()
     
     return 0;
 }
+/*
+//不懂
+#include<iostream>
+using namespace std;
+typedef long long ll;
+ll calc(ll m, ll k)
+{
+    ll res = 1;
+    while (--k) res *= m;
+    return res;
+}
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(0), cout.tie(0);
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        ll n, m, sum = 0, k = 1;
+        cin >> n >> m;
+        while (sum + (m - 1) * k * calc(m, k) < n) 
+        {
+                sum += (m - 1) * k * calc(m, k);
+                k++; 
+        }
+        ll u = n - sum;
+        ll a = calc(m, k) - 1 + u / k;
+        ll b = u % k;
+        if (b == 0) cout << a % m<<endl;
+        else 
+        {
+            a++;
+            a = a / (calc(m, k - b + 1));
+            cout << a % m << endl;
+        }
+    }
+}
+*/
 /*
 //二分
 #include"bits/stdc++.h"
