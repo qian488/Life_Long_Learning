@@ -1,5 +1,6 @@
 //滑窗+前缀和
 #include <bits/stdc++.h>
+//蓝桥杯--字串简写
 using namespace std;
 typedef long long ll;
 #define endl "\n"

@@ -1,38 +1,43 @@
 #include<bits/stdc++.h>
-//9
+//蓝桥--子串分值和
 using namespace std;
 typedef long long ll;
 #define endl "\n"
 const int N = 1e6 + 10;
-
-int check(string s)
-{
-	set<char> stt;
-	for(int i=0;i<s.size();i++) stt.insert(s[i]);
-	return stt.size();
-}
-
+//60分?
 int main()
 {
 	string s;
 	cin>>s;
-	ll ans=0;
-	set<string> tt;
+	ll ans = s.size();
 	for(int i=0;i<s.size();i++)
 	{
-		for(int j=1;j<=s.size();j++)
+		unordered_map<char, int> mp;
+		mp[s[i]]++;
+		for(int j=i+1;j<s.size();j++)
 		{
-			string st=s.substr(i,j);
-			tt.insert(st);
+			mp[s[j]]++;
+			ans += mp.size();
 		}
-	}
-	for(auto e:tt)
-	{
-		int t=check(e);
-    cout<<e<<endl;
-    cout<<t<<endl;
-		ans+=t;
 	}
 	cout<<ans<<endl;
     return 0;
 }
+/*
+#include <iostream>
+using namespace std;
+int last[26];
+int main() {
+    string s;
+    cin >> s;
+    s = " " + s;
+    long long res = 0;
+    int n = s.size();
+    for (int i = 1; i < n; ++i) {
+        res +=(long long) (n - i) * (i - last[s[i] - 'a']);
+        last[s[i] - 'a'] = i;
+    }
+    cout << res;
+    return 0;
+}
+*/

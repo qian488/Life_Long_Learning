@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-//5
+//蓝桥--跑步锻炼
 using namespace std;
 typedef long long ll;
 #define endl "\n"
@@ -25,13 +25,19 @@ int main()
         {
         	for(int k=1;k<=return_days(i,j);k++)
         	{
-        		cnt++;
         		ans++;
-        		if(cnt%7==1) ans++;
-        		if(k==1&&cnt%7==1) ans--;
-			}
+                if(cnt==8) cnt = 1;
+                if(cnt==1||k==1) ans++;
+                cnt++;
+                if (i == 2020 && j == 10 && k == 1)
+                {
+                    cout << ans << endl;
+                    return 0;
+                }
+            }
 		}
     }
     cout << ans;
+    //8879
     return 0;
 }

@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-//7
+//蓝桥--成绩统计
 using namespace std;
 typedef long long ll;
 #define endl "\n"

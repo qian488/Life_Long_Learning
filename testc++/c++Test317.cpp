@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-//8
+//蓝桥--回文日期
 using namespace std;
 typedef long long ll;
 #define endl "\n"
@@ -36,11 +36,7 @@ bool checkhuiwen(int s)
     int f=(s/100)%10;
     int g=(s/10)%10;
     int h=s%10;
-    if(a==h&&b==g&&c==f&&d==e)
-    {
-        return true;
-    }
-    
+    if(a==h&&b==g&&c==f&&d==e) return true;
     return false;
 }
 
@@ -66,3 +62,28 @@ int main()
 	cout<<ans<<endl;
     return 0;
 }
+/*
+//逆向思维
+#include<bits/stdc++.h>
+using namespace std;
+//预处理月份对应天数
+int a[]={0,31,29,31,30,31,30,31,31,30,31,30,31};
+int main(){
+  int n,m;
+  cin>>n>>m;
+  int ans=0;
+//根据月份和天数直接构造回文年份，看是是否在题目要求范围内
+  for(int i=1;i<=12;i++){
+    for(int j=1;j<=a[i];j++){
+//年份
+      int y=j%10*1000+(j/10)*100+i%10*10+i/10;
+//年份+月份+天数组成的回文串
+      int sum=y*10000+i*100+j;
+      if(sum>m||sum<n) continue;
+      else ans++;
+    }
+  }
+  cout<<ans;
+  return 0;
+}
+*/

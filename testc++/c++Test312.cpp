@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-//3
+//蓝桥--即分约数
 using namespace std;
 typedef long long ll;
 #define endl "\n"
