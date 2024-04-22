@@ -24,7 +24,21 @@ const int N=1e6+10;
 
 void Solve()
 {
-    
+    int n;
+    cin >> n;
+    unordered_map<int, int> mp;
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+        mp[x]++;
+    }
+    int cnt = 0;
+    for (auto e : mp) {
+        if (e.second >= 3) {
+            cnt += e.second / 3;
+        }
+    }
+    cout << cnt << endl;
 }
 
 int main()
@@ -36,6 +50,6 @@ int main()
     {
         Solve();
     }
-    //
+    //Codeforces Round 940 (Div. 2) and CodeCraft-23_A.Stickogon
     return 0;
 }

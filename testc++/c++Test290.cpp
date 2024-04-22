@@ -21,10 +21,21 @@ typedef pair<ll,ll> pll;
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N=1e6+10;
 
-
 void Solve()
 {
-    
+    int n, k;
+    cin >> n >> k;
+    if(n==1) cout << k << endl;
+    else {
+        int idx = 1;
+        while (idx*2+1<=k)
+        {
+            idx = idx * 2 + 1;
+        }
+        cout << idx << " " << k - idx << " ";
+        for (int i = 2; i < n;i++) cout << "0 ";
+        cout << endl;
+    }
 }
 
 int main()
@@ -36,6 +47,6 @@ int main()
     {
         Solve();
     }
-    //
+    //Codeforces Round 940 (Div. 2) and CodeCraft-23_B - A BIT of a Construction
     return 0;
 }
