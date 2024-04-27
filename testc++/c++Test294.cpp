@@ -20,11 +20,50 @@ typedef pair<ll,ll> pll;
 #define endl "\n"
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N=1e6+10;
-
+//数据太大
+int qmi(int m,int k){
+    int res = 1, t = m;
+    while(k){
+        if(k&1) res = res * t % MOD;
+        t = t * t % MOD;
+        k >>= 1;
+    }
+    return res;
+}
 
 void Solve()
 {
-    
+    int n;
+    cin >> n;
+    vector<ll> v;
+    for (int i = 0; i < n;i++){
+        int t;
+        cin >> t;
+        v.push_back(t);
+        if (t == v[v.size() - 1]){
+            while(1){
+                if ((v.size()<=1)){
+                    break;
+                }else if((v[v.size()-1]!=v[v.size()-2])){
+                    break;
+                }
+
+                ll sum = ++v[v.size() - 1];
+                v.pop_back();
+                v.pop_back();
+                v.push_back(sum);
+            }
+        }
+        /*
+        for(auto e:v)
+        {
+            cout << e << " ";
+        }
+        cout << endl;
+        */
+    }
+    int ans = v.size();
+    cout << ans << endl;
 }
 
 int main()

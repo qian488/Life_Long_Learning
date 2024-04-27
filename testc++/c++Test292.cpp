@@ -25,15 +25,27 @@ const int N=1e6+10;
 
 void Solve()
 {
-    
-    
+    int a[9], b[8];
+    int suma = 0, sumb = 0;
+    for (int i = 0; i < 9;i++){ 
+        cin >> a[i];
+        suma += a[i];
+    }
+    for (int i = 0; i < 8;i++){
+        cin >> b[i];
+        sumb += b[i];
+    }
+    cout << suma - sumb + 1 << endl;
 }
 
 int main()
 {
     ios 
+    int t = 1;
+    while(t--){
+        Solve();
+    }
     
-    Solve();
     //
     return 0;
 }

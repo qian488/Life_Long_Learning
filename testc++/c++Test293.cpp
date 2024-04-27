@@ -19,11 +19,27 @@ typedef pair<ll,ll> pll;
 #define MOD 1000000007
 #define endl "\n"
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
-const int N=1e6+10;
-
+const int N=110;
+char g[N][N];
 void Solve()
 {
-    
+    int n;
+    cin>>n;
+    for (int i = 0; i < n; i++){
+        for (int j = 0; j < n;j++){
+            cin >> g[i][j];
+        }
+    }
+    for (int i = 0; i < n; i++){
+        for (int j = 0; j < n;j++){
+            char c;
+            cin >> c;
+            if(c!=g[i][j]){
+                cout << i + 1 << " " << j + 1 << endl;
+                return;
+            }
+        }
+    }
 }
 
 int main()
