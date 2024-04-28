@@ -78,6 +78,6 @@ int main()
     ios 
     
     Solve();
-    //
+    //AtCoder Beginner Contest 351_D	Grid and Magnet
     return 0;
 }

@@ -20,23 +20,29 @@ typedef pair<ll,ll> pll;
 #define endl "\n"
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N=2e5+10;
-ll a[N],d[N];
+
 void Solve()
 {
-    ll n;
-    cin>>n;
-    ll maxn=0;
-    for(int i=1;i<=n;i++) cin>>a[i];
-    ll k;
-    cin>>k;
-    ll ans=0;
-    for(int i=1;i<=n;i++){
-        int x=a[i],c=0;
-        while(x>k)x=(x+2)/3,c++;
-        if(x==k)d[c]++;
-    }
-    for(int i=0;i<=30;i++)ans=max(ans,(ll)d[i]<<i);
-    cout<<ans<<endl;
+    int n,sz;
+	ll x,y,ans=0;
+	vector<ll> a[4];
+	cin>>n;
+	for(int i=0;i<n;i++){
+		cin>>x>>y;
+		if((x+y)%2==0){
+			a[0].push_back(x+y);
+			a[1].push_back(x-y);
+		}else{
+			a[2].push_back(x+y);
+			a[3].push_back(x-y);
+		}
+	}
+	for(int i=0;i<4;i++){
+		sort(a[i].begin(),a[i].end());
+		sz=a[i].size();
+		for(int j=0;j<sz;j++) ans+=a[i][j]*(2*j+1-sz);
+	}
+	cout<<(ans/2)<<endl;
 }
 
 int main()
@@ -48,6 +54,6 @@ int main()
         Solve();
     }
     
-    //牛客小白月赛92_C	耕种时间到！
+    //AtCoder Beginner Contest 351_E	Jump Distance Sum
     return 0;
 }

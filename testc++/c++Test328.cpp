@@ -20,23 +20,25 @@ typedef pair<ll,ll> pll;
 #define endl "\n"
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N=2e5+10;
-ll a[N],d[N];
+
 void Solve()
 {
-    ll n;
-    cin>>n;
-    ll maxn=0;
-    for(int i=1;i<=n;i++) cin>>a[i];
-    ll k;
-    cin>>k;
-    ll ans=0;
-    for(int i=1;i<=n;i++){
-        int x=a[i],c=0;
-        while(x>k)x=(x+2)/3,c++;
-        if(x==k)d[c]++;
+    int n,m;
+    cin>>n>>m;
+    vector<vector<ll>> f(m + 1, vector<ll>(2, 1e18));
+ 
+    f[0][0] = 0;
+    for (int i = 1; i <= n; i++) {
+        int x, y;
+        cin >> x >> y;
+ 
+        for (int j = m; j; j--) {
+            f[j][0] = min(f[j][0], f[max(0, j - x)][0] + y);
+            f[j][1] = min(f[j][1], min(f[max(0, j - x)][1] + y, f[max(0, j - 2 * x)][0] + y / 2));
+        }
     }
-    for(int i=0;i<=30;i++)ans=max(ans,(ll)d[i]<<i);
-    cout<<ans<<endl;
+ 
+    cout << f[m][1];
 }
 
 int main()
@@ -48,6 +50,6 @@ int main()
         Solve();
     }
     
-    //牛客小白月赛92_C	耕种时间到！
+    //牛客小白月赛92_E	来硬的
     return 0;
 }

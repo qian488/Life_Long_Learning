@@ -29,20 +29,40 @@ void Solve()
     for (int i = 0; i < n;i++) cin >> g[i];
 
     bool flag = true;
-    bool tt = true, kk = true, ii = true, jj = true;
-    char c = g[0][0];
-    
-    for (int i = 0; i < n;i++){
-        if(g[i][0]!=c) ii = false;
-        if(g[i][m-1]!=c) jj = false;
-    }
-    
+
+    if(n!=1){
+    bool kk = true;
+    char a = g[0][0];
+    char b = g[n - 1][0];
     for (int i = 0; i < m;i++){
-        if(g[0][i]!=c) tt = false;
-        if(g[n-1][i]!=c) kk = false;
+        if(g[0][i]!=a){ 
+            kk = false;
+            break;
+        }
+        if(g[n-1][i]!=b){
+            kk = false;
+            break;
+        }
     }
-    
-    if((tt!=kk)||(ii!=jj)) flag = false;
+    if((a!=b)&&(kk)) flag = false;
+    }
+
+    if(m!=1){
+    bool kk = true;
+    char a = g[0][0];
+    char b = g[0][m - 1];
+    for (int i = 0; i < n;i++){
+        if(g[i][0]!=a){ 
+            kk = false;
+            break;
+        }
+        if(g[i][m-1]!=b){ 
+            kk = false;
+            break;
+        }
+    }
+    if((a!=b)&&(kk)) flag = false;
+    }
     
     if (flag) cout << "YES" << endl;
     else cout << "NO" << endl;
@@ -57,6 +77,6 @@ int main()
         Solve();
     }
     
-    //
+    //Codeforces Round 941 (Div. 2)_B	Rectangle Filling
     return 0;
 }

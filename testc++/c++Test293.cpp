@@ -47,6 +47,6 @@ int main()
     ios 
     
     Solve();
-    //
+    //AtCoder Beginner Contest 351_B	Spot the Difference
     return 0;
 }

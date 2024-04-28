@@ -25,22 +25,22 @@ void Solve()
 {
     int n;
     cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n;i++) cin >> a[i];
-
-    vector<int> dp(n + 1, -1e9);
-
-    for (int i = n - 1; i >= 0; i--) {
-        int t = 0;
-        for (int j = 0; j < 3 && i + j < n; j++) {
-            t = max(t, a[i + j] - dp[i + j + 1]);
+    vector<int> a(n + 1);
+    for (int i = 1; i <= n;i++) cin >> a[i];
+    sort(a.begin(), a.end());
+    bool win = false;
+    for (int i = n; i >= 1;i--){
+        int kk = a[i] - a[i - 1];
+        if(kk>0){
+            if (!win){
+                win = true;
+            }else if(kk==1){
+                win = false;
+            }
+            
         }
-        dp[i] = t;
     }
-    for(auto e:dp){
-        cout << e << " ";
-    }
-    cout << (dp[0] > 0 ? "Alice" : "Bob") << endl;
+    cout << (win ? "Alice" : "Bob") << endl;
 }
 
 int main()
@@ -52,6 +52,6 @@ int main()
         Solve();
     }
     
-    //
+    //Codeforces Round 941 (Div. 2)_C	Everything Nim
     return 0;
 }
