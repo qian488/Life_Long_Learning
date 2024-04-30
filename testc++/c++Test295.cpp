@@ -19,58 +19,64 @@ typedef pair<ll,ll> pll;
 #define MOD 1000000007
 #define endl "\n"
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
-const int N=1e6+10;
+const int N = 1e6 + 10;
 
+int dx[4] = {0, 0, 1, -1};
+int dy[4] = {1, -1, 0, 0};
+vector<int> e[N];
+int vis[N];
+int cnt;
+
+void dfs(int u,int v){
+	if(vis[v]==u) return;
+
+    vis[v] = u;
+    cnt++;
+    for (int i = 0; i < e[v].size(); i++) dfs(u, e[v][i]);
+
+    return;
+}
 
 void Solve()
 {
-    int h, w;
+    int h, w, ans = 0;
+    bool flag;
     cin >> h >> w;
-    vector<string> grid;
-    for (int i = 0; i < h;i++){
-        string s;
-        cin >> s;
-        grid.push_back(s);
-    }
-    vector<vector<int>> degree(h, vector<int>(w, 0)); 
-    vector<vector<bool>> visited(h, vector<bool>(w, false));  
+    vector<string> grid(h);
+    for (int i = 0; i < h; i++) cin >> grid[i];
 
-    vector<int> dx = {-1, 1, 0, 0};
-    vector<int> dy = {0, 0, -1, 1};
-
-    int maxDegree = 0; 
-
-    for (int i = 0; i < h; i++) {
-        for (int j = 0; j < w; j++) {
-            if (grid[i][j] == '#') {
-                continue;  
-            }
-
-            queue<pair<int, int>> q;
-            q.push({i, j});
-            visited[i][j] = true;
-            degree[i][j] = 1;
-
-            while (!q.empty()) {
-                pair<int, int> curr = q.front();
-                q.pop();
-
-                for (int k = 0; k < 4; k++) {
-                    int nx = curr.first + dx[k];
-                    int ny = curr.second + dy[k];
-
-                    if (nx >= 0 && nx < h && ny >= 0 && ny < w && grid[nx][ny] == '.' && !visited[nx][ny]) {
-                        visited[nx][ny] = true;
-                        degree[i][j]++;
-                        q.push({nx, ny});
-                    }
+    for (int i = 0; i < h; i++){
+        for (int j = 0; j < w; j++){
+            if(grid[i][j]=='#') continue;
+            flag = true;
+            int t = i * w + j;
+            for (int k = 0; k < 4; k++){
+                int nx = i + dx[k], ny = j + dy[k];
+                if ((nx >= 0) && (nx < h) && (ny >= 0) && (ny < w)){
+                    e[t].push_back((nx)*w + (ny));
+                    if(grid[nx][ny]=='#')flag=false;
                 }
             }
-            maxDegree = max(maxDegree, degree[i][j]); 
+
+            if(!flag){
+				e[t].clear();
+				continue;
+			}
         }
     }
+    for (int i = 0; i < (h * w); i++) vis[i] = -1;
 
-    cout << maxDegree << endl;
+    for (int i = 0; i < h; i++){
+        for (int j = 0; j < w; j++){
+            int t = i * w + j;
+            if ((grid[i][j] == '.') && (vis[t] < 0)){
+                cnt = 0;
+                dfs(t, t);
+                ans = max(ans, cnt);
+            }
+        }
+    }
+    cout << ans << endl;
 }
 
 int main()
