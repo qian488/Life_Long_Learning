@@ -24,6 +24,28 @@ const int N=2e5+10;
 
 void Solve()
 {
+    int n;
+    cin >> n;
+    if (n==2)
+    {
+        cout << "1 1" << endl;
+        cout << "1 2" << endl;
+    }else if(n==3){
+        cout << "2 1" << endl;
+        cout << "2 3" << endl;
+        cout << "3 1" << endl;
+    }else{
+        cout << "1 1" << endl;
+        cout << "1 2" << endl;
+        cout << "4 2" << endl;
+        for (int i = 4; i <= n;i++){
+            cout << i << " " << i << endl;
+        }
+    }
+    /*
+    cout<<1<<' '<<1<<endl<<1<<' '<<2<<endl;
+    for(int i=0;i<n-2;i++) cout<<n-i<<' '<<n-i<<endl;
+    */
     
 }
 
@@ -36,6 +58,6 @@ int main()
         Solve();
     }
     
-    //
+    //Codeforces Round 943 (Div. 3)_E	Cells Arrangement
     return 0;
 }

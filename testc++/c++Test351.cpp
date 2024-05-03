@@ -20,26 +20,11 @@ typedef pair<ll,ll> pll;
 #define MOD 1000000007
 #define endl "\n"
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
-const int N=4e6+10;
-
-ll gcd(ll a,ll b)
-{
-    return b?gcd(b,a%b):a;
-}
+const int N=2e5+10;
 
 void Solve()
 {
-    ll n, m;
-    cin >> n >> m;
-    ll ans = 0;
-    for (int i = 1; i <= m; i++){
-        for (int j = i; j - i <= n; j += i){
-            ll g = gcd(i, j - i);
-            if(j%(i*g)==0) ans++;
-        }
-    }
-    ans--;
-    cout << ans << endl;
+    
 }
 
 int main()
@@ -51,6 +36,6 @@ int main()
         Solve();
     }
     
-    //Codeforces Round 942 (Div. 2)_D1	Reverse Card (Easy Version)
+    //
     return 0;
 }

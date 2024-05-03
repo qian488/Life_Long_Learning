@@ -74,6 +74,6 @@ int main()
         Solve();
     }
     
-    //
+    //Codeforces Round 942 (Div. 2)_D2	Reverse Card (Hard Version)
     return 0;
 }

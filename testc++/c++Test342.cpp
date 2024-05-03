@@ -24,7 +24,17 @@ const int N=2e5+10;
 
 void Solve()
 {
-    
+    int x;
+    cin>>x;
+    x--;
+    int ans = 0;
+    for (int y = x; y > 0; y--){
+        int t = __gcd(x, y) + y;
+        if(t>ans){
+            ans = y;
+        }
+    }
+    cout << ans << endl;
 }
 
 int main()
@@ -36,6 +46,6 @@ int main()
         Solve();
     }
     
-    //
+    //Codeforces Round 943 (Div. 3)_A	Maximize?
     return 0;
 }
