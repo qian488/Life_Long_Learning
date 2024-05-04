@@ -24,18 +24,35 @@ const int N=2e5+10;
 
 void Solve()
 {
-    
+    int n, k;
+    cin >> n >> k;
+    map<int, int> a;
+    for (int i = 0; i < n;i++){
+        int x;
+        cin >> x;
+        a[x] = i;
+    }
+    set<int> s;
+    for (int i = 1; i <= k;i++) s.insert(a[i]);
+    int ans = *s.rbegin() - *s.begin();
+    for (int i = k+1; i <= n;i++){
+        s.erase(a[i - k]);
+        s.insert(a[i]);
+        int t = *s.rbegin() - *s.begin();
+        ans = min(ans, t);
+    }
+    cout << ans << endl;
 }
 
 int main()
 {
     ios 
     int t = 1;
-    cin >> t;
+    //cin >> t;
     while(t--){
         Solve();
     }
     
-    //
+    //AtCoder Beginner Contest 352_D	Permutation Subsequence
     return 0;
 }

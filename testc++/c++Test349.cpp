@@ -21,21 +21,29 @@ typedef pair<ll,ll> pll;
 #define endl "\n"
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N=2e5+10;
-
+//尼玛大小写。。。
 void Solve()
 {
-    
+    int n, x, y, z;
+    cin >> n >> x >> y >> z;
+    if(n<x||n<y||n<z){
+        cout << "No" << endl;
+        return;
+    }
+    if((z<=x&&z>=y)||(z>=x&&z<=y)) cout << "Yes" << endl;
+    else cout << "No" << endl;
+
 }
 
 int main()
 {
     ios 
     int t = 1;
-    cin >> t;
+    //cin >> t;
     while(t--){
         Solve();
     }
     
-    //
+    //AtCoder Beginner Contest 352_A	AtCoder Line
     return 0;
 }

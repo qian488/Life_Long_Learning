@@ -24,18 +24,27 @@ const int N=2e5+10;
 
 void Solve()
 {
-    
+    string s, t;
+    cin >> s >> t;
+    for (int i = 0,j=0; i < t.length();i++){
+        if (s[j]==t[i])
+        {
+            cout << i + 1 << " ";
+            j++;
+        }
+        
+    }
 }
 
 int main()
 {
     ios 
     int t = 1;
-    cin >> t;
+    //cin >> t;
     while(t--){
         Solve();
     }
     
-    //
+    //AtCoder Beginner Contest 352_B	Typing
     return 0;
 }
