@@ -24,18 +24,30 @@ const int N=2e5+10;
 
 void Solve()
 {
-    
+    string s;
+    cin >> s;
+    int n = s.size();
+    int ans = -1;
+    for (int i = 0; i < n;i++){
+        string t = s.substr(i) + s.substr(0, i);
+        ll k = (t[t.size() - 2] - '0') * 10 + (t[t.size() - 1] - '0');
+        //cout<<t<<" "<<k<<endl;
+        if(k%4==0){ 
+            ans = i;
+            break;
+        }
+    }
+    cout << ans << endl;
 }
 
 int main()
 {
     ios 
     int t = 1;
-    cin >> t;
+    //cin >> t;
     while(t--){
         Solve();
     }
     
-    //Codeforces Round 943 (Div. 3)_G2	Division + LCP (hard version)
     return 0;
 }

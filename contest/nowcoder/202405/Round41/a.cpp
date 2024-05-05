@@ -24,18 +24,22 @@ const int N=2e5+10;
 
 void Solve()
 {
-    
+    ll a,b,c;
+    cin>>a>>b>>c;
+    ll ans = 0;
+    ans = min(a - b, c - b);
+    if(a-b<0||c-b<0) ans = 0;
+    cout << ans << endl;
 }
 
 int main()
 {
     ios 
     int t = 1;
-    cin >> t;
+    //cin >> t;
     while(t--){
         Solve();
     }
     
-    //Codeforces Round 943 (Div. 3)_G2	Division + LCP (hard version)
     return 0;
 }

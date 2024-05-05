@@ -24,18 +24,36 @@ const int N=2e5+10;
 
 void Solve()
 {
-    
+    int n, k;
+    cin >> n >> k;
+    vector<int> p(n), q(n);
+    for (int i = 0; i < n;i++){ 
+        cin >> p[i];
+        q[i] = p[i];
+    }
+    if(k==1||k>n){
+        cout << -1 << endl;
+        return;
+    }
+    for (int i = 1; i < k - 1; i++)
+    {
+        q[i] = p[i - 1];
+    }
+    q[0] = p[k - 1];
+    q[k - 1] = p[k - 2];
+    for(auto e:q){
+        cout << e << " ";
+    }
 }
 
 int main()
 {
     ios 
     int t = 1;
-    cin >> t;
+    //cin >> t;
     while(t--){
         Solve();
     }
     
-    //Codeforces Round 943 (Div. 3)_G2	Division + LCP (hard version)
     return 0;
 }

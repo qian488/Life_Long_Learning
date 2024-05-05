@@ -24,6 +24,18 @@ const int N=2e5+10;
 
 void Solve()
 {
+    int n,q;
+    cin >> n >> q;
+    string s;
+    cin >> s;
+    while (q--)
+    {
+        int l, r;
+        cin >> l >> r;
+        string t = s.substr(l - 1, r - l + 1);
+        int len = t.length();
+        cout<<t<<endl;
+    }
     
 }
 
@@ -31,11 +43,10 @@ int main()
 {
     ios 
     int t = 1;
-    cin >> t;
+    //cin >> t;
     while(t--){
         Solve();
     }
     
-    //Codeforces Round 943 (Div. 3)_G2	Division + LCP (hard version)
     return 0;
 }

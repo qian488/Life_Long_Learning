@@ -22,8 +22,10 @@ typedef pair<ll,ll> pll;
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N=2e5+10;
 
+//树形DP
 void Solve()
 {
+    
     
 }
 
@@ -31,11 +33,10 @@ int main()
 {
     ios 
     int t = 1;
-    cin >> t;
+    //cin >> t;
     while(t--){
         Solve();
     }
     
-    //Codeforces Round 943 (Div. 3)_G2	Division + LCP (hard version)
     return 0;
 }
