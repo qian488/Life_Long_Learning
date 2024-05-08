@@ -1,0 +1,12 @@
+01 zhangsan 95
+02 lisi 66
+03 wangwu 88.5
+04 liuhua 96
+05 kexi 56
+06 jiehan 100
+07 lige 59
+08 keli 76
+09 buluo 84
+10 kuman 64
+11 gufan 80
+12 yili 90

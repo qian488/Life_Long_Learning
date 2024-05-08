@@ -4,7 +4,7 @@
 #include <stdint.h>
 #define __STDC_FORMAT_MACROS
 #include <inttypes.h>
-#include "lab1-1_2.h"
+#include "SequenceList.h"
 //题目
 /*
 ①	有序顺序表的操作，包括初始化，求数据元素个树，插入，删除和取数据元素。
@@ -19,13 +19,13 @@
 
 int main() 
 {
-    SqList L1, L2, L3;
+    SequenceList L1, L2, L3;
     InitList(&L1);
     InitList(&L2);
 
     // 测试数据
-    ElemType data1[] = {'l', 'u', 'a', 'n'};
-    ElemType data2[] = {'l', 'a', 'n', 'u'};
+    i32 data1[] = {'l', 'u', 'a', 'n'};
+    i32 data2[] = {'l', 'a', 'n', 'u'};
 
     // 插入测试数据
     for (int i = 0; i < 4; i++) 

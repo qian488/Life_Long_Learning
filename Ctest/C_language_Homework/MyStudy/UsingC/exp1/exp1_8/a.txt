@@ -1,0 +1,5 @@
+01 zhangsan 95.5
+02 lisi 88.0
+03 wangwu 66.0
+04 liuhua 100.0
+05 keli 75.0
