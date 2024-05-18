@@ -24,7 +24,27 @@ const int N=2e5+10;
 
 void Solve()
 {
+    int n;
+    cin >> n;
+    vector<pair<int,pair<int,int>>> se;
+    for (int i = 1; i <= n;i++){
+        int a, c;
+        cin >> a >> c;
+        se.push_back({i,{a, c}});
+        if (!se.empty()){
+            for (auto e:se){
+                if (e.second.first<a&&e.second.second>c){
+                    se.erase(e);
+                }
+            }
+        }
+    }
     
+    cout << se.size() << endl;
+    for (auto e:se){
+        cout << e.first << " ";
+    }
+    cout << endl;
 }
 
 int main()

@@ -24,14 +24,40 @@ const int N=2e5+10;
 
 void Solve()
 {
-    
+    int a, b, c;
+    cin >> a >> b >> c;
+    int sum = 0, ans = 0;
+    sum += a + b + c;
+    if(sum%2){ 
+        cout << -1 << endl;
+        return;
+    }
+    if (a==0&&b==0&&c==0)
+    {
+        cout << 0 << endl;
+        return;
+    }
+    if(a==0&&b==0&&c!=0){
+        cout << 0 << endl;
+        return;
+    }
+    if(a==0&&b!=0&&c!=0){
+        cout << min(b, c) << endl;
+        return;
+    }
+    if(a+b<=c){
+        ans = a + b;
+    }else{
+        ans += a;
+        ans += (b + c - a) / 2;
+    }
+    cout << ans << endl;
 }
-
 int main()
 {
     ios 
     int t = 1;
-    //cin >> t;
+    cin >> t;
     while(t--){
         Solve();
     }

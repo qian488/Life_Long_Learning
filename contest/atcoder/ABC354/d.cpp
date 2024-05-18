@@ -24,7 +24,11 @@ const int N=2e5+10;
 
 void Solve()
 {
+    int a, b, c, d;
+    cin >> a >> b >> c >> d;
+    int ans = 0;
     
+    cout << ans << endl;
 }
 
 int main()

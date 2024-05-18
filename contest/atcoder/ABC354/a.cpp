@@ -24,7 +24,21 @@ const int N=2e5+10;
 
 void Solve()
 {
-    
+    int h;
+    cin >> h;
+    int k = log2(h);
+    k++;
+    if((pow(2,k)-1)==h) k++;
+    cout << k << endl;
+    /*
+    int cnt = 1;
+    ll sum = 0;
+    for (int i = 1; sum <= h ;i++){
+        sum += pow(2,i);
+        cnt++;
+    }
+    cout << cnt << endl;
+    */
 }
 
 int main()

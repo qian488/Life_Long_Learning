@@ -1,4 +1,6 @@
-//状压DP
+### 状压DP
+[题解](https://leetcode.cn/problems/find-the-minimum-cost-array-permutation/solutions/2775272/zhuang-ya-dpcong-ji-yi-hua-sou-suo-dao-d-s9t5/)
+```cpp
 class Solution {
 public:
     vector<int> findPermutation(vector<int>& a) {
@@ -36,3 +38,5 @@ public:
         return ans;
     }
 };
+
+```

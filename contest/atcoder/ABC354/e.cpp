@@ -24,7 +24,21 @@ const int N=2e5+10;
 
 void Solve()
 {
-    
+    int n;
+    cin >> n;
+    bool flag = false;
+    vector<pair<int, int>> v;
+    while (n--)
+    {
+        int a, b;
+        cin >> a >> b;
+        v.push_back({a, b});
+    }
+    if (flag){
+        cout << "Takahashi" << endl;
+    }else{
+        cout << "Aoki" << endl;
+    }
 }
 
 int main()

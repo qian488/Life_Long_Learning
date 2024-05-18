@@ -24,14 +24,22 @@ const int N=2e5+10;
 
 void Solve()
 {
-    
+    int a[5];
+    for(int i=0;i<5;i++) cin>>a[i];
+    int k=a[0];
+    sort(a,a+5);
+    int ans=0;
+    for(int i=0;i<5;i++){
+        if(a[i]==k) ans=i;
+    }
+    ans=4-ans;
+    cout<<ans<<endl;
 }
-
 int main()
 {
     ios 
     int t = 1;
-    //cin >> t;
+    cin >> t;
     while(t--){
         Solve();
     }

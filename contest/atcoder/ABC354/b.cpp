@@ -24,7 +24,28 @@ const int N=2e5+10;
 
 void Solve()
 {
-    
+    int n;
+    cin >> n;
+    map<string, int> nmp;
+    int sum = 0;
+    for (int i = 0; i < n;i++){
+        string s;
+        int c;
+        cin >> s >> c;
+        nmp[s] = c;
+        sum += c;
+    }
+    string ans = "";
+    int tt = sum % n;
+    int cnt = 0;
+    for(auto e:nmp){
+        if (cnt==tt){
+            ans = e.first;
+            break;
+        }
+        cnt++;
+    }
+    cout << ans << endl;
 }
 
 int main()
