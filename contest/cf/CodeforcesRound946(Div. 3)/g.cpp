@@ -24,26 +24,24 @@ const int N=2e5+10;
 
 void Solve()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n;i++){
+    int m, x;
+    cin >> m >> x;
+    vector<int> a(m);
+    int s = 0;
+    priority_queue<int> q;
+    for (int i = 0; i < m; i++) {
         cin >> a[i];
+        if (s >= a[i]) {
+            s -= a[i];
+            q.push(a[i]);
+        } else if (q.size() && a[i] < q.top()) {
+            s += q.top() - a[i];
+            q.pop();
+            q.push(a[i]);
+        }
+        s += x;
     }
-    ll ans = 0;
-    map<pii, int> mp1, mp2, mp3;
-    map<vector<int>, int> cnt;
-    for (int i = 0; i+2 < n; i++)
-    {
-        ans += mp1[{a[i], a[i + 1]}]++;
-        ans += mp2[{a[i], a[i + 2]}]++;
-        ans += mp3[{a[i + 1], a[i + 2]}]++;
-        vector<int> v = {a[i], a[i + 1], a[i + 2]};
-        ans -= cnt[v] * 3;
-        cnt[v]++;
-    }
-    
-    cout << ans << endl;
+    cout << q.size() << endl;
 }
 
 int main()

@@ -17,7 +17,7 @@ typedef unsigned long long ull;
 typedef pair<int,int> pii;
 typedef pair<ll,ll> pll;
 #define INF 0x3f3f3f3f
-#define MOD 100000000
+#define MOD 1000000007
 #define endl "\n"
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N=2e5+10;
@@ -27,19 +27,23 @@ void Solve()
     int m, x;
     cin >> m >> x;
     int ans = 0;
-    int money = 0;
+    int sum = 0;
     // 贪心？应该是DP...
-    int dp[N];
-
+    vector<int> c(m), h(m);
     for (int i = 0; i < m;i++){
-        int c, h;
-        cin >> c >> h;
-        
-        if(money>=c){ 
-            ans += h;
-            money -= c;
+        cin >> c[i] >> h[i];
+        sum += h[i];
+    }
+    vector<ll> dp(N, (ll)-1e18);
+    dp[0] = 0;
+    for (int i = 0; i < m;i++){
+        for (int j = sum; j >= 0;j--){
+            if(j>=h[i]&&dp[j-h[i]]>=c[i]) dp[j] = max(dp[j], dp[j - h[i]] - c[i]);
+            dp[j] += x;
         }
-        money += x;
+    }
+    for (int i = 0; i <= sum;i++){
+        if(dp[i]>=0) ans = i;
     }
     cout << ans << endl;
 }
