@@ -25,13 +25,18 @@ const int N=2e5+10;
 
 
 void Solve() {
-    ll x;
-    cin >> x;
-   
-    if (x%10==9||(x%100==0&&x%10==0)) {
-        cout << "NO" << endl;
-    } else {
+    string s;
+    cin >> s;
+    bool ok = true;
+    if (s[0] != '1') ok = false;
+    if (s.back() == '9') ok = false;
+    for (int i = 1; i + 1 < s.size(); i++) {
+        if (s[i] == '0') ok = false;
+    }
+    if(ok){
         cout << "YES" << endl;
+    }else{
+        cout << "NO" << endl;
     }
 }
 

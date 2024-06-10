@@ -27,26 +27,19 @@ void Solve()
 {
     int n;
     cin >> n;
-    
     vector<int> a(n);
-    bool tt = false;
     for (int i = 0; i < n; i++) {
         cin >> a[i];
-        if(a[i]>0) tt = true;
     }
-    ll c = 0;
-    if(!tt){
-        for(auto e:a) c += e;
-        cout << abs(c) << endl;
-        return;
-    }
+    ll kk = 0;
+    ll ans = 0;
     for (int i = 0; i < n; i++) {
-        ll kk = abs(c + a[i]);
-        c += a[i];
-        c = max(kk, c);
+      kk += a[i];
+      ans += a[i];
+      ans = max(ans, abs(kk));
+      ans = max(ans, abs(ans));
     }
-
-    cout << c << endl;
+    cout << ans << endl;
 }
 
 int main()

@@ -28,6 +28,15 @@ void Solve()
     string s;
     cin >> s;
     int n = s.size();
+    int cnt = 0;
+    for (char ch : s) {
+        cnt += (ch != 'a');
+    }
+    if (cnt == 0) {
+        cout << n - 1 << endl;
+        return;
+    }
+
     unordered_set<string> st;
 
     for (int i = 0; i < n; ++i) {
@@ -68,6 +77,7 @@ void Solve()
         if (ok) ans++;
     }
     cout << ans << endl;
+
 }
 
 int main()

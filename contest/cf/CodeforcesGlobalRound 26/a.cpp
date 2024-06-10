@@ -36,25 +36,14 @@ void Solve()
         return;
     }
 
-    cout << "YES" << endl;
-    for (int i = 0; i < n; i++) {
-        if (a[i] == a[0]) {
-            cout << "B";
-        } else if (a[i] == a[n-1]) {
-            cout << "R";
-        } else {
-            cout << ((i % 2 == 0) ? "B" : "R");
-        }
-    }
-    cout << endl;
-    /*
     if (a[0] == a[n - 1]) {
         cout << "NO" << endl;
     } else {
         cout << "YES" << endl;
-        cout << string(n - 1, 'R') << "B" << endl;
+        string s(n, 'R');
+        s[1] = 'B';
+        cout << s << endl;
     }
-    */
 }
 
 int main()

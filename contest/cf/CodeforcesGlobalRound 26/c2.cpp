@@ -28,40 +28,33 @@ void Solve()
     int n;
     cin >> n;
     vector<ll> a(n);
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; i++) {
         cin >> a[i];
     }
 
-    unordered_map<ll, ll> dp;
+    map<ll, ll> dp;
     dp[0] = 1;
 
     for (int i = 0; i < n; i++) {
-        unordered_map<ll, ll> new_dp;
+        map<ll, ll> new_dp;
 
-        for (auto& [tt, cnt] : dp) {
-            ll new_c1 = tt + a[i];
-            ll new_c2 = abs(tt + a[i]);
-
-            new_dp[new_c1] = (new_dp[new_c1] + cnt) % MOD;
-            new_dp[new_c2] = (new_dp[new_c2] + cnt) % MOD;
+        for (auto& [x, y] : dp) {
+            new_dp[x + a[i]] = (new_dp[x + a[i]] + y) % MOD;
+            new_dp[abs(x + a[i])] = (new_dp[abs(x + a[i])] + y) % MOD;
         }
 
-        dp = move(new_dp);
-    }
-
-    ll max_c = 0;
-    ll ways = 0;
-
-    for (auto& [c, cnt] : dp) {
-        if (c > max_c) {
-            max_c = c;
-            ways = cnt;
-        } else if (c == max_c) {
-            ways = (ways + cnt) % MOD;
+        vector<pair<ll, ll>> v(new_dp.begin(), new_dp.end());
+        dp.clear();
+        for (int j = 0; j < v.size(); j++) {
+            if (j == 0 || j == v.size() - 1) {
+                dp[v[j].first] = v[j].second;
+            }
         }
     }
+    
+    auto it = dp.rbegin();
+    cout << it->second << endl;
 
-    cout << ways % MOD << endl;
 }
 
 int main()
