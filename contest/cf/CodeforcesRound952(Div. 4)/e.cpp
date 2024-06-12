@@ -25,33 +25,19 @@ const int N=2e5+10;
 
 void Solve()
 {
-    int k;
-    int b[3];
-    cin >> b[0] >> b[1] >> b[2] >> k;
-    int s[3];
-    bool ff = false;
-    sort(b, b + 3);
-    for (int i = b[0]; i > 0; i--){
-        for (int j = b[1]; j > 0;j--){
-            for (int t = b[2]; t > 0;t--){
-                if (i*j*t==k){
-                    s[0] = i;
-                    s[1] = j;
-                    s[2] = t;
-                    ff = true;
-                    break;
-                }
-                }
-                if(ff)break;
-            }
-        if(ff)break;
+    ll x, y, z, w;
+    cin >> x >> y >> z >> w;
+    ll ans = 0;
+    for (int i = 1; i <= x; i++) {
+        if (w % i != 0) continue;
+        for (int j = 1; j <= y; j++) {
+            if ((w / i) % j != 0) continue;
+            ll k = w / i / j;
+            if (k > z) continue;
+            ans = max(ans, (x - i + 1) * (y - j + 1) * (z - k + 1));
+        }
     }
-    sort(s, s + 3);
-    if(ff){
-        cout << (b[0] - s[0] + 1) * (b[1] - s[1] + 1) * (b[2] - s[2] + 1) << endl;
-    }else{
-        cout << 0 << endl;
-    }
+    cout << ans << endl;
 }
 
 int main()
