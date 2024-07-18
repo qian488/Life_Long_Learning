@@ -24,7 +24,23 @@ const int N=2e5+10;
 
 void Solve()
 {
-    
+    ll n;
+    cin >> n;
+
+    vector<ll> v;
+
+    for (int i = 62; i >= 0; i--)
+    {
+        ll x = 1LL << i;
+        if ((x & n) == x && x != n) v.push_back(n - x);
+    }
+    v.push_back(n);
+
+    cout << v.size() << endl;
+    for (auto e : v){
+        cout << e << " ";
+    }
+    cout << endl;
 }
 
 int main()

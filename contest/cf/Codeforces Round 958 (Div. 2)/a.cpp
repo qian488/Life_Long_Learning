@@ -24,7 +24,10 @@ const int N=2e5+10;
 
 void Solve()
 {
-    
+    int n,k;
+    cin >> n >> k;
+    n--, k--;
+    cout << ((n + k - 1) / k) << endl;
 }
 
 int main()

@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 // 这个就是文件读写
+// TODO 不知道为什么output的文件没有声音，直接损坏？
 
 // Number of bytes in .wav header
 const int HEADER_SIZE = 44;
@@ -48,6 +49,7 @@ int main(int argc, char *argv[])
         printf("%d ", buffer);
         // factor is the amount by which the volume of the original audio file should be scaled
         buffer *= factor;
+        printf("%d\n", buffer);
         fwrite(&buffer, sizeof(int16_t), 1, output);
     }
     // Close files

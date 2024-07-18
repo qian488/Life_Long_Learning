@@ -24,7 +24,40 @@ const int N=2e5+10;
 
 void Solve()
 {
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    int a = 0, b = 0;
+    for (int i = 0; i < s.size(); i++)
+    {
+        if(s[i]=='1'){
+            a += 1;
+        }else{
+            if (i == 0 || s[i - 1] == '1')
+            {
+                b += 1;
+            }
+        }
+    }
     
+    /*
+    int index = 0;
+    while (index < n)
+    {
+        if(s[index]=='1'){
+            a += 1;
+            index += 1;
+        }else{
+            while (index < n && s[index] == '0')
+            {
+                index += 1;
+            }
+            b += 1;
+        }
+    }
+    */
+    cout << ((a > b) ? "YES" : "NO") << endl;
 }
 
 int main()
