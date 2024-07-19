@@ -1,0 +1,1 @@
+print("love come from linux --HoshinoRikka")
