@@ -25,7 +25,7 @@ const int N=2e5+10;
 
 void Solve()
 {
-    
+     
 }
 
 int main()
