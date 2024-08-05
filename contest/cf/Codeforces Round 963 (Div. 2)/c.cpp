@@ -7,20 +7,20 @@ typedef pair<int, int> pii;
 const int N = 2e5 + 10;
 
 void Solve(void) {
-    int n, k;
+    ll n, k;
     cin >> n >> k;
     vector<ll> a(n);
 
-    for (int i = 0; i < n; i++) {
+    for (ll i = 0; i < n; i++) {
         cin >> a[i];
     }
 
     sort(a.begin(), a.end());
-
-    for(int i = a[n - 1]; i < a[n - 1] + k; i++){
+/*
+    for (ll i = a[n - 1]; i < a[n - 1] + k; i++){
         bool ok = false;
-        for(int e : a){
-            if(((i - e) / k) % 2) {
+        for(ll e : a){
+            if(((i - e) / k) % 2 == 1) {
                 ok = true;
                 break;
             }
@@ -31,6 +31,21 @@ void Solve(void) {
         }
     }
     cout << "-1" << endl;
+*/
+    ll v = *max_element(a.begin(), a.end());
+    
+    for (int i = 0; i < n; i++) {
+        if ((v - a[i]) % (2 * k) >= k) {
+            v += 2 * k - (v - a[i]) % (2 * k);
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        if ((v - a[i]) % (2 * k) >= k) {
+            v = -1;
+            break;
+        }
+    }
+    cout << v << endl;
 }
 
 
