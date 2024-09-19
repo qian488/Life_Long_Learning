@@ -21,35 +21,42 @@ typedef pair<ll,ll> pll;
 #define MOD 1000000007
 #define endl "\n"
 #define ios {ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);}
-const int N=2e5+10;
+const int N=1e6+10;
 
-ll qmi(ll m,ll k,ll p)
-{
-    ll res=1%p,t=m;
-    while(k)
-    {
-        if(k&1) res=res*t%p;
-        t=t*t%p;
-        k>>=1;
+vector<int> a[N];
+bool vis[N];
+int sum;
+
+void dfs(int u){
+    if(!vis[u]){
+        sum++;
+        vis[u]=1;
+        for(auto e:a[u]){
+            if(!vis[e]) dfs(e);
+        }
     }
-    return res;
 }
 
-void Solve()
-{
-    ll n;
+void Solve(){
+    int n;
     cin>>n;
-    vector<ll> a(n);
-    ll sum = 0,ans = 0;
-	for (int i = 0;i < n; i++){
-		cin >> a[i];
-		sum = (sum + a[i]) % MOD;
-		ans = (ans - a[i] * a[i]) % MOD;
-	}
-	ans = (ans + sum * sum) % MOD;
-	ans = ans * qmi(n * (n - 1) % MOD,MOD - 2,MOD) % MOD;
-	ans = (ans % MOD + MOD) % MOD;
-	cout << ans << endl;
+
+    for(int i=0;i<=n;i++){
+        a[i].clear();
+        vis[i]=0;
+    }
+    sum=0;
+
+    for(int i=0;i<n;i++){
+        int l,r;
+        cin >> l >> r;
+        l--;
+        a[l].push_back(r);
+        a[r].push_back(l);
+    }
+
+    dfs(0);
+    cout<<((sum==n+1)?1:0)<<endl;
 }
 
 int main()
@@ -60,6 +67,6 @@ int main()
     while(t--){
         Solve();
     }
-    
+
     return 0;
 }

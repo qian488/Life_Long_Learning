@@ -22,34 +22,30 @@ typedef pair<ll,ll> pll;
 #define endl "\n"
 #define ios {ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);}
 const int N=2e5+10;
-
-ll qmi(ll m,ll k,ll p)
-{
-    ll res=1%p,t=m;
-    while(k)
-    {
-        if(k&1) res=res*t%p;
-        t=t*t%p;
-        k>>=1;
-    }
-    return res;
-}
-
-void Solve()
-{
-    ll n;
+int a[N],stk[N],l[N],r[N];
+void Solve(){
+    int n,tt=0;
     cin>>n;
-    vector<ll> a(n);
-    ll sum = 0,ans = 0;
-	for (int i = 0;i < n; i++){
-		cin >> a[i];
-		sum = (sum + a[i]) % MOD;
-		ans = (ans - a[i] * a[i]) % MOD;
-	}
-	ans = (ans + sum * sum) % MOD;
-	ans = ans * qmi(n * (n - 1) % MOD,MOD - 2,MOD) % MOD;
-	ans = (ans % MOD + MOD) % MOD;
-	cout << ans << endl;
+    for(int i=1;i<=n;i++) cin>>a[i];
+    // 找左边
+    stk[tt]=0;
+    for(int i=1;i<=n;i++){
+        while(tt && a[i]>a[stk[tt]]) tt--;
+        l[i]=stk[tt]+1;
+        stk[++tt]=i;
+    }
+    // 找右边
+    stk[tt=0]=n+1;
+    a[n+1]=0;
+    for (int i=n;i>=1;i--){
+        while(tt && a[i]>a[stk[tt]]) tt--;
+        r[i]=stk[tt]-1;
+        if(a[r[i]+1]==a[i]) r[i] = i; // 连续右边界要保持原来的不变
+        stk[++tt]=i;
+    }
+    ll ans=0;
+    for (int i=1;i<=n;i++) ans += r[i] - l[i];
+    cout << ans << endl;
 }
 
 int main()
@@ -60,6 +56,6 @@ int main()
     while(t--){
         Solve();
     }
-    
+
     return 0;
 }

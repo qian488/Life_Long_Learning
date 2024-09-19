@@ -13,7 +13,7 @@ int idx,h[N],e[M],ne[M];
 int dtime[N],low[N];
 int stk[N],id[N],scc_size[N];
 int outd[N];
-int t = 0, top = 0, scc_cnt = 0;
+int t = 0, tt = 0, scc_cnt = 0;
 bool in_stk[N];
 
 void add(int a,int b)
@@ -30,7 +30,7 @@ void init()
 void tarjan(int u) 
 {
     dtime[u] = low[u] = ++t;
-    stk[++top] = u, in_stk[u] = true;
+    stk[++tt] = u, in_stk[u] = true;
     for(int i = h[u];~i;i = ne[i]) 
     {
         int j = e[i];
@@ -49,7 +49,7 @@ void tarjan(int u)
         scc_cnt++; 
         int y;
         do {
-            y = stk[top--];
+            y = stk[tt--];
             id[y] = scc_cnt;
             scc_size[scc_cnt]++;
             in_stk[y] = false;

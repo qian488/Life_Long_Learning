@@ -4,7 +4,7 @@
 using namespace std;
 //pta并查集专场--谁问你了
 const int N = 1000010;
-int p[N], size[N];
+int p[N], sz[N];
 int n, m;
 int cnt;
 void init()
@@ -13,7 +13,7 @@ void init()
     for (int i = 1; i <= n; i++)
     {
         p[i] = i;
-        size[i] = 1;
+        sz[i] = 1;
     }
     
 }
@@ -29,8 +29,8 @@ void add(int a,int b)
     if (x!=y)
     {
         p[x] = y;
-        size[y] += size[x];
-        size[x] = 0;
+        sz[y] += sz[x];
+        sz[x] = 0;
         cnt--;
     }
     
@@ -50,9 +50,9 @@ int main()
     vector<int> ans;
     for (int i = 1; i <= n; i++)
     {
-        if (p[i]==i&&size[i]>0)
+        if (p[i]==i&&sz[i]>0)
         {
-            ans.push_back(size[i]);
+            ans.push_back(sz[i]);
         }
         
     }

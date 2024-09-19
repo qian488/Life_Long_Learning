@@ -23,33 +23,27 @@ typedef pair<ll,ll> pll;
 #define ios {ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);}
 const int N=2e5+10;
 
-ll qmi(ll m,ll k,ll p)
-{
-    ll res=1%p,t=m;
-    while(k)
-    {
-        if(k&1) res=res*t%p;
-        t=t*t%p;
-        k>>=1;
-    }
-    return res;
-}
-
 void Solve()
 {
-    ll n;
+    int n;
     cin>>n;
-    vector<ll> a(n);
-    ll sum = 0,ans = 0;
-	for (int i = 0;i < n; i++){
-		cin >> a[i];
-		sum = (sum + a[i]) % MOD;
-		ans = (ans - a[i] * a[i]) % MOD;
-	}
-	ans = (ans + sum * sum) % MOD;
-	ans = ans * qmi(n * (n - 1) % MOD,MOD - 2,MOD) % MOD;
-	ans = (ans % MOD + MOD) % MOD;
-	cout << ans << endl;
+    map<string, set<string>> mp;
+    for (int i = 0; i < n; i++) {
+        string a, b, c;
+        cin >> a >> b >> c;
+        if (c[0] == 'a') {
+            mp[b].insert(a);
+        }
+    }
+    int maxn = 0;
+    string ans;
+    for (auto &[x,y] : mp) {
+        if (y.size() > maxn) {
+            maxn = y.size();
+            ans = x;
+        }
+    }
+    cout<<ans<<endl;
 }
 
 int main()
@@ -60,6 +54,6 @@ int main()
     while(t--){
         Solve();
     }
-    
+
     return 0;
 }
