@@ -1,2 +1,11 @@
 .vscode/
 .venv/
+
+# 忽略 bin 文件夹
+**/bin/
+
+# 忽略 obj 文件夹
+**/obj/
+
+# 忽略 Csharp_Study.csproj 文件
+Csharp_Study.csproj
