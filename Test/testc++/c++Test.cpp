@@ -1,4 +1,4 @@
-/*
+
 #include<iostream>
 using namespace std;
 int main()
@@ -6,7 +6,7 @@ int main()
     cout << "纸上谈来终觉浅，绝知此事要躬行！" << endl;
     return 0;
 }
-*/
+/*
 //删除单向循环链表的某个结点的前驱结点
 #include <iostream>
 
@@ -74,3 +74,4 @@ int main() {
 
     return 0;
 }
+*/
