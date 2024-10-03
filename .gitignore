@@ -9,3 +9,9 @@
 
 # 忽略 Csharp_Study.csproj 文件
 Csharp_Study.csproj
+
+**/node_modules/
+
+package.json
+package-lock.json
+tsconfig.json
