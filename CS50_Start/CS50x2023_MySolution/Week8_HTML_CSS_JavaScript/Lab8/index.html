@@ -7,24 +7,89 @@
         <title>Trivia!</title>
         <script>
             // TODO: Add code to check answers to questions
+            /*
+            - 选项被点击时，检测答案，正确颜色变绿，错误颜色变红，并给出对应的提示
+            */
+            document.addEventListener("DOMContentLoaded", function() {
+                // 返回的信息
+                const feedback1 = document.querySelector("#feedback1");
+                const feedback2 = document.querySelector("#feedback2");
+
+                function checkAnswer(element, isCorrect) {
+                    element.style.backgroundColor = isCorrect ? "green" : "red";
+                    let message = isCorrect ? "Correct!" : "Incorrect!";
+                    element.closest('.section').querySelector("#feedback1").innerHTML = message;
+                }
+
+                document.querySelectorAll(".answer").forEach(answer => {
+                    answer.addEventListener("click", function() {
+                        let isCorrect = this.classList.contains("correct");
+                        checkAnswer(this, isCorrect);
+                    });
+                });
+
+                document.querySelector("#check").addEventListener("click", function() {
+                    let input = document.querySelector("input");
+                    const correctAnswers = ["以恋结缘", "恋ひ恋ふ縁"];
+                    const userAnswer = input.value.toLowerCase();
+                    input.style.backgroundColor = correctAnswers.includes(userAnswer) ? "green" : "red";
+                    feedback2.innerHTML = correctAnswers.includes(userAnswer) ? "Correct!" : "Incorrect!";
+                });
+
+            });
         </script>
     </head>
     <body>
         <div class="header">
-            <h1>Trivia!</h1>
+            <h1>Ciallo!!!</h1>
         </div>
 
         <div class="container">
             <div class="section">
-                <h2>Part 1: Multiple Choice </h2>
+                <h2>Part 1: Choice </h2>
                 <hr>
-                <!-- TODO: Add multiple choice question here -->
+
+                <h3>千恋万花中我最喜欢的角色是？</h3>
+
+                <button class="answer">朝武芳乃</button>
+                <button class="answer">常陆茉子</button>
+                <button class="answer">丛雨</button>
+                <button class="answer">蕾娜·列支敦瑙尔</button>
+                <button class="answer correct">马庭芦花</button>
+                <button class="answer">鞍马小春</button>
+
+                <p id="feedback1"></p>
+
             </div>
 
             <div class="section">
-                <h2>Part 2: Free Response</h2>
+                <!-- 原本是想搞有个按钮来检测全部选中才算正确的，但是这样会干扰单选的逻辑，要么都加检查按钮，要么都不加-->
+                <h2>Part 2: Multiple Choice </h2>
                 <hr>
-                <!-- TODO: Add free response question here -->
+                <h3>魔女的夜宴中我喜欢的角色有？</h3>
+
+                <button class="answer correct">绫地宁宁</button>
+                <button class="answer correct">因幡爱瑠</button>
+                <button class="answer">椎叶䌷</button>
+                <button class="answer correct">户隐憧子</button>
+                <button class="answer">仮屋和奏</button>
+                <button class="answer correct">相马七绪</button>
+                <button class="answer">久岛佳苗</button>
+
+                <p id="feedback1"></p>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 3: Free Response</h2>
+                <hr>
+
+                <h3>千恋万花的OP是?</h3>
+
+                <input type="text">
+                <button id="check">Check Answer</button>
+
+                <p id="feedback2"></p>
             </div>
         </div>
     </body>

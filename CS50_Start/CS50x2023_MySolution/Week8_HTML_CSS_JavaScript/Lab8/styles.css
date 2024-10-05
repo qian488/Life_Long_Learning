@@ -1,62 +1,78 @@
 body {
-    background-color: #fff;
-    color: #212529;
-    font-size: 1rem;
+    background-color: #f5f5f7; /* 轻柔的背景色 */
+    color: #1e1e1e; /* 深灰色文字 */
+    font-size: 16px;
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.6;
     margin: 0;
-    text-align: left;
+    text-align: center; /* 居中对齐 */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* 苹果和现代系统字体 */
 }
 
 .container {
+    max-width: 1170px; /* 限制最大宽度 */
     margin-left: auto;
     margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .header {
-    background-color: #477bff;
-    color: #fff;
-    margin-bottom: 2rem;
-    padding: 2rem 1rem;
-    text-align: center;
+    background-color: hsl(221, 100%, 69%); /* 浅灰色背景 */
+    color: #1e1e1e; /* 深灰色文字 */
+    margin-bottom: 3rem;
+    padding: 3rem 1rem;
 }
 
 .section {
-    padding: 0.5rem 2rem 1rem 2rem;
+    padding: 1rem 2rem;
+    background-color: #ffffff; /* 块背景使用纯白 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 添加轻微的阴影以增加层次感 */
+    margin-bottom: 2rem;
+    border-radius: 10px; /* 圆角边框 */
 }
 
 .section:hover {
-    background-color: #f5f5f5;
-    transition: color 2s ease-in-out, background-color 0.15s ease-in-out;
+    background-color: #fcfcfc;
+    transition: background-color 0.3s ease;
 }
 
 h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 48px;
+    font-family: 'Arial', sans-serif; /* 使用更简洁的字体 */
+    font-size: 36px;
+    margin-bottom: 1rem;
 }
 
 button, input[type="submit"] {
-    background-color: #d9edff;
-    border: 1px solid transparent;
-    border-radius: 0.25rem;
-    font-size: 0.95rem;
-    font-weight: 400;
-    line-height: 1.5;
-    padding: 0.375rem 0.75rem;
-    text-align: center;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    vertical-align: middle;
+    background-color: #007bff; /* 苹果风格的蓝色背景 */
+    color: #fff; /* 白色文字 */
+    border: none; /* 无边框 */
+    border-radius: 5px; /* 圆角 */
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer; /* 鼠标光标变为指针 */
+    transition: background-color 0.3s ease;
 }
 
+button:hover, input[type="submit"]:hover {
+    background-color: #0056b3; /* 鼠标悬浮时更深的蓝色背景 */
+}
 
 input[type="text"] {
-    line-height: 1.8;
-    width: 25%;
+    padding: 10px;
+    border: 1px solid #ccc; /* 轻微的边框 */
+    border-radius: 5px;
+    width: 100%; /* 占满容器宽度 */
+    margin-bottom: 1rem; /* 底部留白 */
+    box-sizing: border-box; /* 边框和内边距包含在宽度内 */
 }
 
 input[type="text"]:hover {
-    background-color: #f5f5f5;
-    transition: color 2s ease-in-out, background-color 0.15s ease-in-out;
+    border-color: #888; /* 鼠标悬浮时边框颜色变深 */
+}
+
+br {
+    content: "";
+    display: block;
+    height: 20px; /* 增加换行的间隙 */
 }

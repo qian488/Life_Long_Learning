@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+a {
+    display: inline-block;
+}
+
+.large-link {
+    font-size: 86px;
+}
+
+.body-background {
+    background-image: url('https://raw.githubusercontent.com/qian488/qian_personal_bolg_images/main/img/01952,.png');
+    background-size: cover; /* 覆盖整个元素 */
+    background-position: center; /* 将图片置于容器中心 */
+    background-repeat: no-repeat; /* 确保图片不重复 */
+}
