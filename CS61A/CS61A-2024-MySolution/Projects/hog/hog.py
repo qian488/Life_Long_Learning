@@ -318,6 +318,8 @@ def run_experiments():
     print('sus_strategy win rate:', average_win_rate(sus_strategy))
     print('final_strategy win rate:', average_win_rate(final_strategy))
     "*** You may add additional experiments as you wish ***"
+    # add my strategy
+    print('always_roll(0) win rate:', average_win_rate(always_roll(0)))
 
 
 
@@ -326,14 +328,20 @@ def boar_strategy(score, opponent_score, threshold=11, num_rolls=6):
     points, and returns NUM_ROLLS otherwise. Ignore score and Sus Fuss.
     """
     # BEGIN PROBLEM 10
-    return num_rolls  # Remove this line once implemented.
+    if boar_brawl(score, opponent_score) >= threshold:
+        return 0
+    else:
+        return num_rolls
     # END PROBLEM 10
 
 
 def sus_strategy(score, opponent_score, threshold=11, num_rolls=6):
     """This strategy returns 0 dice when your score would increase by at least threshold."""
     # BEGIN PROBLEM 11
-    return num_rolls  # Remove this line once implemented.
+    if sus_update(0, score, opponent_score) - score >= threshold:
+        return 0
+    else:
+        return num_rolls
     # END PROBLEM 11
 
 
@@ -343,7 +351,24 @@ def final_strategy(score, opponent_score):
     *** YOUR DESCRIPTION HERE ***
     """
     # BEGIN PROBLEM 12
-    return 6  # Remove this line once implemented.
+    # final check
+    if score >= opponent_score:
+        roll_0_dice_score = sus_update(0, score, opponent_score)
+        roll_1_dice_score = sus_update(1, score, opponent_score)
+        roll_2_dice_score = sus_update(2, score, opponent_score)
+        if roll_0_dice_score >= GOAL:
+            return 0
+        elif roll_1_dice_score >= GOAL:
+            return 1
+        elif roll_2_dice_score >= GOAL:
+            return 2
+    # avg more high rate strategy
+    average_rate = make_averaged(roll_dice,100) # 1000 --> evaluation exceeded 10 seconds
+    threshold_roll_6_dice = average_rate(6)
+    if sus_update(0, score, opponent_score) - score >= threshold_roll_6_dice:
+        return 0
+    else:
+        return 6
     # END PROBLEM 12
 
 
