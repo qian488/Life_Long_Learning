@@ -3,3 +3,5 @@
 'interleaved_sum-correct', (1024, 70)
 'count_dollars-correct', (1536, 70)
 'count_dollars_upward-correct', (2048, 70)
+'move_stack-correct', (2560, 70)
+'make_anonymous_factorial-correct', (3072, 70)
