@@ -13,6 +13,14 @@ def shuffle(s):
     """
     assert len(s) % 2 == 0, 'len(seq) must be even'
     "*** YOUR CODE HERE ***"
+    half = len(s) // 2
+    a = [s[i] for i in range(half)]
+    b = [s[half + i] for i in range(half)]
+    ans = []
+    for i in range(half):
+        ans.append(a[i])
+        ans.append(b[i])
+    return ans
 
 
 def deep_map(f, s):
@@ -38,7 +46,13 @@ def deep_map(f, s):
     True
     """
     "*** YOUR CODE HERE ***"
+    for i in range(len(s)):
+        if type(s[i]) == list:
+            deep_map(f,s[i])
+        else:
+            s[i] = f(s[i])
 
+    return None
 
 HW_SOURCE_FILE=__file__
 
@@ -47,11 +61,13 @@ def planet(mass):
     """Construct a planet of some mass."""
     assert mass > 0
     "*** YOUR CODE HERE ***"
+    return ['planet',mass]
 
 def mass(p):
     """Select the mass of a planet."""
     assert is_planet(p), 'must call mass on a planet'
     "*** YOUR CODE HERE ***"
+    return p[1]
 
 def is_planet(p):
     """Whether p is a planet."""
@@ -104,7 +120,18 @@ def balanced(m):
     True
     """
     "*** YOUR CODE HERE ***"
+    left_arm = left(m)
+    right_arm = right(m)
 
+    left_torque = total_mass(end(left_arm)) * length(left_arm)
+    right_torque = total_mass(end(right_arm)) * length(right_arm)
+
+    torque_balanced = left_torque == right_torque
+
+    ends_balanced = (not is_mobile(end(left_arm)) or balanced(end(left_arm))) and \
+                    (not is_mobile(end(right_arm)) or balanced(end(right_arm)))
+
+    return torque_balanced and ends_balanced
 
 def berry_finder(t):
     """Returns True if t contains a node with the value 'berry' and 
@@ -124,6 +151,14 @@ def berry_finder(t):
     True
     """
     "*** YOUR CODE HERE ***"
+    if label(t) == 'berry':
+        return True
+    
+    for i in branches(t):
+        if berry_finder(i):
+            return True
+        
+    return False
 
 
 HW_SOURCE_FILE=__file__
@@ -139,7 +174,14 @@ def max_path_sum(t):
     17
     """
     "*** YOUR CODE HERE ***"
+    if is_leaf(t):
+        return label(t)
+    
+    ans = 0
+    for i in branches(t):
+        ans = max(ans, max_path_sum(i))
 
+    return label(t) + ans
 
 def mobile(left, right):
     """Construct a mobile from a left arm and a right arm."""

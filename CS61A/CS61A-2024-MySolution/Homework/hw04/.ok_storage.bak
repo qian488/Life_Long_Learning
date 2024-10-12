@@ -1,0 +1,5 @@
+'shuffle-correct', (0, 70)
+'deep_map-correct', (512, 70)
+'total_mass-correct', (1024, 70)
+'max_path_sum-correct', (1536, 70)
+'balanced-correct', (2048, 70)
