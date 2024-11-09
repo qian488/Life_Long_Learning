@@ -25,24 +25,24 @@ const int N=2e5+10;
 
 void Solve()
 {
-    ll n,k;
-    cin>>n>>k;
-    vector<ll> a(n);
+    int n;
+    cin>>n;
+    vector<int> a(n),b(n);
     for(int i=0;i<n;i++) cin>>a[i];
-    sort(a.begin(), a.end());
-    ll num = 0,last = 0,ans = 0;
-	for(int i = 0;i<n;i++){
-		if(k-num<=(n-i)*(a[i]-last)){
-			ans+=k-num;
-			break;
-		}else{
-			num+=(n-i)*(a[i]-last);
-			ans+=(n-i)*(a[i]-last);
-		}
-		last = a[i];
-		ans++;
-	}
-    cout << ans << endl; 
+
+    if(n==1) return cout<<0<<endl,void();
+
+    int x=0;
+    for(int i=0;i<n;i++) {
+        if(a[i]>x) x++;
+        if(a[i]<x) x--;
+        b[i]=x;
+    }
+ 
+    for(int i=0;i<n-1;i++) b[i]=max(b[i],b[i+1]);
+
+    
+
 }
 
 int main()

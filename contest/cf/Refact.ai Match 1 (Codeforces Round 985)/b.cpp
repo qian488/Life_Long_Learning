@@ -25,24 +25,32 @@ const int N=2e5+10;
 
 void Solve()
 {
-    ll n,k;
-    cin>>n>>k;
-    vector<ll> a(n);
-    for(int i=0;i<n;i++) cin>>a[i];
-    sort(a.begin(), a.end());
-    ll num = 0,last = 0,ans = 0;
-	for(int i = 0;i<n;i++){
-		if(k-num<=(n-i)*(a[i]-last)){
-			ans+=k-num;
-			break;
-		}else{
-			num+=(n-i)*(a[i]-last);
-			ans+=(n-i)*(a[i]-last);
-		}
-		last = a[i];
-		ans++;
-	}
-    cout << ans << endl; 
+    int n;
+    cin>>n;
+    string s,r;
+    cin>>s>>r;
+    vector<bool> vis(n+1,false);
+
+
+    for (int i = 0; i < n - 1; i++) {
+        bool found = false;
+        for (int k = 0,j=k+1; k < s.length() - 1; k++) {
+            while(vis[j]) j++;
+            if (s[k] != s[j]) {
+                s[k] = r[i];
+                vis[j] = true;
+                found = true;
+                break;
+            }
+        }
+        
+        if (!found) {
+            cout << "NO" << endl;
+            return;
+        }
+    }
+
+    cout << "YES" << endl;
 }
 
 int main()
