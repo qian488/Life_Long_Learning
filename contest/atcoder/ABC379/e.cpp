@@ -23,33 +23,46 @@ typedef pair<ll,ll> pll;
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N=2e5+10;
 
+vector<int> add(vector<int> &A,vector<int> &B)
+{//C=A+B,满足A>=0,B>=0
+    if(A.size()<B.size()) return add(B,A);
+    
+    vector<int> C;
+    int t=0;
+    for(int i=0;i<A.size();i++)
+    {
+        t+=A[i];
+        if(i<B.size()) t+=B[i];
+        C.push_back(t%10);
+        t/=10;
+    }
+    
+    if(t) C.push_back(t);
+    return C;
+}
+
 void Solve()
 {
-    ll n,k;
-    cin>>n>>k;
-    vector<ll> a(n);
-    for(int i=0;i<n;i++) cin>>a[i];
-    sort(a.begin(), a.end());
-    ll num = 0,last = 0,ans = 0;
-	for(int i = 0;i<n;i++){
-		if(k-num<=(n-i)*(a[i]-last)){
-			ans+=k-num;
-			break;
-		}else{
-			num+=(n-i)*(a[i]-last);
-			ans+=(n-i)*(a[i]-last);
-		}
-		last = a[i];
-		ans++;
-	}
-    cout << ans << endl; 
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+    
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            string t = s.substr(i,j-i+1);
+            
+
+        }
+    }
+
 }
 
 int main()
 {
     ios 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while(t--){
         Solve();
     }

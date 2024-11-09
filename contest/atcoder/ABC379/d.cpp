@@ -25,31 +25,34 @@ const int N=2e5+10;
 
 void Solve()
 {
-    ll n,k;
-    cin>>n>>k;
-    vector<ll> a(n);
-    for(int i=0;i<n;i++) cin>>a[i];
-    sort(a.begin(), a.end());
-    ll num = 0,last = 0,ans = 0;
-	for(int i = 0;i<n;i++){
-		if(k-num<=(n-i)*(a[i]-last)){
-			ans+=k-num;
-			break;
-		}else{
-			num+=(n-i)*(a[i]-last);
-			ans+=(n-i)*(a[i]-last);
-		}
-		last = a[i];
-		ans++;
-	}
-    cout << ans << endl; 
+    int q;
+    cin>>q;
+    multiset<ll> plants;
+    ll offset = 0;
+    while(q--){
+        int op;
+        cin>>op;
+        if(op==1){
+            plants.insert(0-offset);
+        }else if(op==2){
+            ll t;cin>>t;
+            offset += t;
+        }else if(op==3){
+            ll h;cin>>h;
+            auto it = plants.lower_bound(h-offset);
+            int ans = distance(it, plants.end());
+            plants.erase(it, plants.end());
+            cout << ans << endl;
+        }
+    }
+
 }
 
 int main()
 {
     ios 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while(t--){
         Solve();
     }

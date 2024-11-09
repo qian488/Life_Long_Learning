@@ -27,25 +27,28 @@ void Solve()
 {
     int n,q;
     cin>>n>>q;
-    vector<int> a(n);
-
-    for(int i=0;i<n;i++) cin>>a[i];
-
+    vector<int> a(n+1);
+    for(int i=1;i<=n;i++) cin>>a[i];
+    vector<int> mx(n + 1,0);
+    for(int i = 1; i <= n; i++) mx[i] = max(mx[i - 1], a[i]);
     string s;
-    cin>>s;
-
-    while(q--){
-        int x;
-        cin>>x;
-        x--;
-
-        if(){
-            cout<<"YES"<<endl;
-        }else{
-            cout<<"NO"<<endl;
-        }
+    cin >> s;
+    s = 'k' + s;
+    set<int> st;
+    for(int i = 1; i < n; i++) {
+        if(s[i] == 'L' && s[i + 1] == 'R' && mx[i] > i) st.insert(i);
     }
-
+    while(q--){
+        int pos;
+        cin >> pos;
+        if(s[pos] == 'L' && s[pos + 1] == 'R' && mx[pos] > pos) st.erase(pos);
+        if(s[pos] == 'R' && s[pos - 1] == 'L' && mx[pos - 1] > pos - 1) st.erase(pos - 1);
+        if(s[pos] == 'L') s[pos] = 'R';
+        else s[pos] = 'L';
+        if(s[pos] == 'L' && s[pos + 1] == 'R' && mx[pos] > pos) st.insert(pos);
+        if(s[pos] == 'R' && s[pos - 1] == 'L' && mx[pos - 1] > pos - 1) st.insert(pos - 1);
+        cout << (st.size() > 0 ? "NO" : "YES") << endl;
+    }
 }
 
 int main()
