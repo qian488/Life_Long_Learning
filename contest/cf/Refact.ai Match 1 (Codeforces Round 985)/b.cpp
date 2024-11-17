@@ -27,30 +27,29 @@ void Solve()
 {
     int n;
     cin>>n;
-    string s,r;
-    cin>>s>>r;
-    vector<bool> vis(n+1,false);
+    int cnt0=0,cnt1=0;
 
-
-    for (int i = 0; i < n - 1; i++) {
-        bool found = false;
-        for (int k = 0,j=k+1; k < s.length() - 1; k++) {
-            while(vis[j]) j++;
-            if (s[k] != s[j]) {
-                s[k] = r[i];
-                vis[j] = true;
-                found = true;
-                break;
-            }
-        }
-        
-        if (!found) {
-            cout << "NO" << endl;
+    string s;
+    cin>>s;
+    for(int i=0;i<n;i++) {
+        if(s[i]=='0') cnt0++;
+        else cnt1++;
+    }
+ 
+    string t;
+    cin>>t;
+    for(int i=0;i<n-1;i++) {
+        if(cnt0*cnt1==0) {
+            cout<<"NO\n";
             return;
         }
+        if(t[i]=='0') {
+            cnt1--;
+        } else {
+            cnt0--;
+        }
     }
-
-    cout << "YES" << endl;
+    cout<<"YES\n";
 }
 
 int main()

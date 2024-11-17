@@ -21,40 +21,24 @@ typedef pair<ll,ll> pll;
 #define MOD 1000000007
 #define endl "\n"
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
+#define lowbit(x) ((x)&(-x))
 const int N=2e5+10;
-
-vector<int> add(vector<int> &A,vector<int> &B)
-{//C=A+B,满足A>=0,B>=0
-    if(A.size()<B.size()) return add(B,A);
-    
-    vector<int> C;
-    int t=0;
-    for(int i=0;i<A.size();i++)
-    {
-        t+=A[i];
-        if(i<B.size()) t+=B[i];
-        C.push_back(t%10);
-        t/=10;
-    }
-    
-    if(t) C.push_back(t);
-    return C;
-}
 
 void Solve()
 {
     int n;
     cin>>n;
+    vector<ll> v(n);
     string s;
     cin>>s;
-    
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            string t = s.substr(i,j-i+1);
-            
+    for(int i=0;i<n;i++) v[i]=(s[i]-'0')*(i+1);
+    for(int i=1;i<n;i++) v[i]+=v[i-1];
 
-        }
+    for(int i=n-1;i>0;i--) {
+        v[i-1]+=v[i]/10;
+        v[i]%=10;
     }
+    for(auto e:v) cout<<e;
 
 }
 
