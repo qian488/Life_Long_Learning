@@ -39,10 +39,30 @@ void Solve()
         b[i]=x;
     }
  
-    for(int i=0;i<n-1;i++) b[i]=max(b[i],b[i+1]);
+    for(int i=0;i<n-1;i++) b[i+1]=max(b[i],b[i+1]);
 
-    
+    int l=0,r=1e9;
+    while(l+1<r) {
+        int mid=(l+r)/2;
+ 
+        bool yes=false;
+ 
+        int L=mid;
+        for(int i=n-1;i>=0;i--) {
+            int val=0;
+            if(i>0) val=b[i-1];
 
+            if(val>=L) yes = true;
+
+            if (L > a[i]) L++;
+            else L--;
+
+        }
+
+        if(yes) l=mid;
+        else r=mid;
+    }
+    cout<<l<<endl;
 }
 
 int main()

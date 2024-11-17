@@ -12,6 +12,7 @@
 #include<queue>
 #include<string>
 #include<bitset>
+#include<numeric>
 using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
@@ -25,9 +26,9 @@ const int N=2e5+10;
 
 void Solve()
 {
-    int n,m;
+    ll n,m;
     cin>>n>>m;
-    vector<int> x(m),a(m);
+    vector<ll> x(m),a(m);
     for(int i=0;i<m;i++) cin>>x[i];
     for(int i=0;i<m;i++) cin>>a[i];
 
@@ -37,24 +38,18 @@ void Solve()
     }
     sort(mp.begin(), mp.end());
 
-    ll ans = 0;
-    ll _pos = 1; 
+    ll ans = n*(n+1)/2, sum = 0;
+    for(int i=0;i<m;i++){
+        if(sum < mp[i].first - 1) return cout<<-1<<endl,void();
 
-    for (int i=0;i + 1<mp.size();i++) {
-        ll pos = mp[i+1].first;
-        ll count = mp[i].second;
-        ll cnt = pos - _pos;
-        if(cnt<count) return cout<<-1<<endl,void();
-        _pos=pos;
-        ans+=cnt*(cnt+1)/2;
-        mp[i+1].second += count - cnt;
-        cout<<ans<<" ";
+        sum += mp[i].second;
+        ans -= mp[i].first*mp[i].second;
     }
 
-    ll count = mp.back().second;
-    ans+=count*(count-1)/2;
+    if(sum != n) return cout<<-1<<endl,void();
 
-    cout << ans << endl;
+    cout<<ans<<endl;
+
 }
 
 int main()
