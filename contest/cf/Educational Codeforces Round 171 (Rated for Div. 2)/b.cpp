@@ -5,31 +5,24 @@ typedef long long ll;
 void solve() {
     int n;
     cin >> n;
-    vector<ll> a(n);
+    vector<ll> a(n+10);
     for(int i=0;i<n;i++) cin >> a[i];
-    if(n == 1 || n == 2) return cout << 1 << endl,void();
     ll ans = 0;
     if(n%2 == 0) {
-        for(int i=0;i<n;i+=2){
-            ans = max(ans,a[i + 1] - a[i]);
-        } 
-        cout << ans << endl;
+        for(int i=0;i<n;i+=2) ans = max(ans,a[i + 1] - a[i]);
     }else{
         ans = 2e18;
-        for(int i=0;i<n;i++){
+        for(int i=0;i<n;i+=2){
             ll tt = 0;
-            for(int j=0;j<n-1;j+=2){
-                if(j == i) {
-                    j--;
-                    continue;
-                }
+            for(int j=0;j<n;j+=2){
+                if(j == i) j++;
                 //cout << j << " " << j + 1 << endl;
-                tt = max(tt,a[j + 1] - a[j]);
+                tt = max(tt,(a[j + 1] - a[j]));
             }
             ans = min(ans,tt);
         }
-        cout << ans << endl;
     }
+    cout << max(ans,1LL) << endl;
 }
 
 int main() {
