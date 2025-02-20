@@ -23,6 +23,8 @@ typedef pair<ll,ll> pll;
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N=2e5+10;
 
+// MLE 不管力
+
 void Solve()
 {
     string s;

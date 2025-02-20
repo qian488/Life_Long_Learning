@@ -22,29 +22,47 @@ typedef pair<ll,ll> pll;
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N=2e5+10;
 
+struct Card {
+    int a;
+    int c;
+    int index;
+};
+
 void Solve()
 {
     int n;
     cin >> n;
-    vector<pair<int,pair<int,int>>> se;
-    for (int i = 1; i <= n;i++){
+    vector<Card> cards(n);
+    for (int i = 0; i < n; ++i) {
         int a, c;
         cin >> a >> c;
-        se.push_back({i,{a, c}});
-        if (!se.empty()){
-            for (auto e:se){
-                if (e.second.first<a&&e.second.second>c){
-                    se.erase(e);
-                }
-            }
-        }
+        cards[i] = {a, c, i};
     }
     
-    cout << se.size() << endl;
-    for (auto e:se){
-        cout << e.first << " ";
+    sort(cards.begin(), cards.end(), [&](const auto &l, const auto &r) {
+        return l.c < r.c;
+    });
+    
+    vector<int> ans;
+    int v = 0;
+    for (int i = 0; i < n; ++i) {
+        if (cards[i].a > v) {
+            v = cards[i].a;
+            ans.push_back(cards[i].index);
+        }
     }
-    cout << endl;
+    sort(ans.begin(), ans.end());
+    
+    const int m = (int)ans.size();
+    cout << m << endl;
+    for (int i = 0; i < m; ++i) {
+        cout << ans[i] + 1;
+        if (i == m - 1) {
+            cout << endl;
+        } else {
+            cout << ' ';
+        }
+    }
 }
 
 int main()

@@ -26,29 +26,19 @@ void Solve()
 {
     int n, m;
     cin >> n >> m;
-    int ans = (n | n + 1 | n + 2);
-    if(m==0) {
-        ans = n;
-        cout << ans << endl;
-        return;
-    }
-    if(m==1){
-        ans = n | n + 1;
-        cout << ans << endl;
-        return;
-    }
-    if(n==0&&m>=2){
-        cout << (m-1|m|m+1) << endl;
-        return;
-    }
-    if(pow(2,m)>=n){
-        int q = 1, t = pow(2,m);
-        while (t>n){
-            t /= 2;
-            q++;
+    
+    int l = max(0, n - m), r = n + m;
+    
+    int ans = 0;
+    for (int i = 0; i <= 30; i++) {
+        int u = l;
+        if (~u >> i & 1) {
+            u |= 1 << i;
+            u &= ~((1 << i) - 1);
         }
-        n += q;
-        ans = (n | n + 1 | n + 2);
+        if (u <= r) {
+            ans |= 1 << i;
+        }
     }
     cout << ans << endl;
 }

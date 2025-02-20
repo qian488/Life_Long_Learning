@@ -22,17 +22,44 @@ typedef pair<ll,ll> pll;
 #define ios {ios::sync_with_stdio(0);cin.tie(0);}
 const int N=2e5+10;
 
+// 二进制枚举
+
 void Solve()
 {
-    
-    
+    int n,m,k;
+    cin>>n>>m>>k;
+    vector<int> v[m];
+    vector<char> r(m);
+    for(int i=0;i<m;i++){
+        int c;
+        cin >> c;
+        for(int j=0;j<c;j++){
+            int a;
+            cin >> a;
+            a--;
+            v[i].push_back(a);
+        }
+        cin >> r[i];
+    }
+
+    int ans = 0;
+    for(int mask=0;mask<(1<<n);mask++){
+        bool ok = true;
+        for(int i=0;i<m;i++){
+            int cnt = 0;
+            for(auto e:v[i]) cnt += (mask>>e)&1;
+            ok &= ((cnt >= k) == (r[i] == 'o'));
+        }
+        ans += ok;
+    }
+    cout << ans << endl;
 }
 
 int main()
 {
     ios 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while(t--){
         Solve();
     }
