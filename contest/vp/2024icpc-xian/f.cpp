@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+#define endl '\n'
+map<string,int> mp;
+
+void solve(){
+    
+}
+
+
+int main(){
+    int t;
+    cin>>t;
+    while (t--)
+    {
+        solve();
+    }
+    return 0;
+}

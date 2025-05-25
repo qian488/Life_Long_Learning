@@ -12,6 +12,18 @@ Csharp_Study.csproj
 
 **/node_modules/
 
+*.exe
+*.log
+
+# 排除所有临时构建文件夹
+**/[Oo]bj/**
+**/[Bb]in/**
+**/[Dd]esktop/**
+**/[Hh]ost/**
+**/.vs/**
+**/node_modules/**
+
+
 package.json
 package-lock.json
 tsconfig.json
